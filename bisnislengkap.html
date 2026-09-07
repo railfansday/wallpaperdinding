@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Utility Hub — Enterprise Complete Edition</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- QR Code Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- html2pdf Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            app: {
+              dark: '#0b0f17',
+              card: '#111827',
+              panel: '#1f2937'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-app-dark text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-app-dark/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-600 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-emerald-500/20">
+          <i class="fa-solid fa-building text-sm"></i>
+        </div>
+        <div>
+          <span class="text-lg font-black tracking-tight text-white block leading-none">BIZ<span class="text-emerald-400">HUB</span> <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">PRO</span></span>
+          <span class="text-[10px] text-gray-400 tracking-wider uppercase font-semibold">Enterprise Business & Operational Suite</span>
+        </div>
+      </div>
+      <div class="text-xs text-gray-400 font-medium hidden sm:flex items-center space-x-2">
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center space-x-1">
+          <i class="fa-solid fa-shield-halved text-[10px]"></i>
+          <span>100% Client-Side & Offline Ready</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
+    
+    <!-- HEADER HERO -->
+    <div class="text-center max-w-3xl mx-auto space-y-2">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white">Dashboard Alat Keuangan & Operasional Bisnis</h1>
+      <p class="text-xs sm:text-sm text-gray-400">Solusi serba ada untuk UMKM, startup, dan profesional: hitung profit, buat faktur PDF, kelola kas harian, buat tanda tangan digital, hingga analisa marketing.</p>
+    </div>
+
+    <!-- SEKTOR 1: PENCATAT KAS & TRANSAKSI -->
+    <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-800 pb-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-base font-bold">
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+          <div>
+            <h2 class="text-base font-bold text-white">1. Buku Kas & Transaksi Harian</h2>
+            <p class="text-xs text-gray-400">Catat arus masuk/keluar uang bisnis. Data tersimpan di browser Anda.</p>
+          </div>
+        </div>
+        <div class="flex space-x-2 text-xs">
+          <button onclick="exportCashData()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-gray-300 rounded-xl border border-slate-700 transition">
+            <i class="fa-solid fa-download mr-1"></i> Ekspor JSON
+          </button>
+          <button onclick="clearCashData()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-rose-400 rounded-xl border border-slate-700 transition">
+            <i class="fa-solid fa-trash mr-1"></i> Reset
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <!-- Input Form -->
+        <div class="space-y-2 md:col-span-1">
+          <input type="text" id="cashDesc" placeholder="Keterangan (contoh: Penjualan Produk A)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+          <input type="number" id="cashAmount" placeholder="Nominal (Rp)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+          <select id="cashType" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+            <option value="in">Pemasukan (+)</option>
+            <option value="out">Pengeluaran (-)</option>
+          </select>
+          <button onclick="addCashEntry()" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-xl transition">
+            <i class="fa-solid fa-plus mr-1"></i> Tambah Transaksi
+          </button>
+        </div>
+
+        <!-- Cash Summary & Log -->
+        <div class="md:col-span-3 space-y-3">
+          <div class="grid grid-cols-3 gap-2">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-3">
+              <span class="text-[10px] text-gray-400 block uppercase">Total Pemasukan</span>
+              <span id="totalCashIn" class="text-sm font-bold text-emerald-400">Rp 0</span>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-3">
+              <span class="text-[10px] text-gray-400 block uppercase">Total Pengeluaran</span>
+              <span id="totalCashOut" class="text-sm font-bold text-rose-400">Rp 0</span>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-3">
+              <span class="text-[10px] text-gray-400 block uppercase">Saldo Kas Bersih</span>
+              <span id="totalCashNet" class="text-sm font-bold text-blue-400">Rp 0</span>
+            </div>
+          </div>
+
+          <!-- Table Log -->
+          <div class="max-h-40 overflow-y-auto rounded-xl border border-slate-800 bg-slate-950/50 p-2">
+            <table class="w-full text-left text-xs">
+              <thead class="text-gray-500 border-b border-slate-800">
+                <tr>
+                  <th class="py-1 px-2">Tanggal</th>
+                  <th class="py-1 px-2">Keterangan</th>
+                  <th class="py-1 px-2">Tipe</th>
+                  <th class="py-1 px-2 text-right">Nominal</th>
+                </tr>
+              </thead>
+              <tbody id="cashTableBody" class="divide-y divide-slate-800/50 text-gray-300">
+                <!-- Rows injected dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID TOOLBOX ALAT KEUANGAN & PEMASARAN -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- TOOL 2: MARGIN & PRICING CALCULATOR -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">2. Margin & Harga Jual</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">Hitung harga jual presisi dari HPP & target margin.</p>
+          
+          <div class="space-y-2">
+            <div>
+              <label class="block text-[10px] text-gray-400">Modal / HPP (Rp)</label>
+              <input type="number" id="hppInput" placeholder="50000" oninput="calcMargin()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-[10px] text-gray-400">Target Profit Margin (%)</label>
+              <input type="number" id="marginInput" placeholder="30" oninput="calcMargin()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none">
+            </div>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 space-y-1 text-xs mt-3">
+            <div class="flex justify-between text-gray-400"><span>Harga Jual Target:</span><span id="priceResult" class="text-emerald-400 font-bold">Rp 0</span></div>
+            <div class="flex justify-between text-gray-400"><span>Keuntungan Bersih:</span><span id="profitResult" class="text-blue-400 font-bold">Rp 0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 3: BREAK-EVEN POINT (BEP) CALCULATOR -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">3. Kalkulator BEP (Impas)</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">Hitung unit jualan minimal agar balik modal.</p>
+
+          <div class="grid grid-cols-2 gap-2 mb-2">
+            <div>
+              <label class="block text-[10px] text-gray-400">Biaya Tetap (Bulan)</label>
+              <input type="number" id="fixedCost" placeholder="3000000" oninput="calcBEP()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+            </div>
+            <div>
+              <label class="block text-[10px] text-gray-400">Harga / Unit</label>
+              <input type="number" id="unitPrice" placeholder="100000" oninput="calcBEP()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+            </div>
+          </div>
+          <div>
+            <label class="block text-[10px] text-gray-400">Biaya Variabel / Unit</label>
+            <input type="number" id="varCost" placeholder="60000" oninput="calcBEP()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs space-y-1 mt-3">
+            <div class="flex justify-between"><span>Target Unit:</span><span id="bepUnits" class="text-blue-400 font-bold">0 Unit</span></div>
+            <div class="flex justify-between"><span>Omset Impas:</span><span id="bepRevenue" class="text-emerald-400 font-bold">Rp 0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 4: ROAS & ROI MARKETING CALCULATOR -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-bullhorn"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">4. Kalkulator ROAS & ROI Iklan</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">Evaluasi efektivitas biaya iklan & pemasaran Anda.</p>
+
+          <div class="grid grid-cols-2 gap-2 mb-2">
+            <div>
+              <label class="block text-[10px] text-gray-400">Biaya Iklan (Rp)</label>
+              <input type="number" id="adSpend" placeholder="500000" oninput="calcROAS()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+            </div>
+            <div>
+              <label class="block text-[10px] text-gray-400">Omset Hasil Iklan</label>
+              <input type="number" id="adRevenue" placeholder="2500000" oninput="calcROAS()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+            </div>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs space-y-1">
+            <div class="flex justify-between"><span>Skor ROAS:</span><span id="roasResult" class="text-pink-400 font-bold">0x</span></div>
+            <div class="flex justify-between"><span>Persentase ROI:</span><span id="roiResult" class="text-emerald-400 font-bold">0%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 5: PAYROLL & TAKE-HOME PAY -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">5. Kalkulator Gaji & Potongan</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-2">Hitung Take-Home Pay Karyawan cepat.</p>
+
+          <div class="space-y-2">
+            <input type="number" id="payBase" placeholder="Gaji Pokok (Rp)" oninput="calcPayroll()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+            <div class="grid grid-cols-2 gap-2">
+              <input type="number" id="payBonus" placeholder="Tunjangan (Rp)" oninput="calcPayroll()" class="bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+              <input type="number" id="payCut" placeholder="Potongan (Rp)" oninput="calcPayroll()" class="bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+            </div>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs space-y-1 mt-3">
+            <div class="flex justify-between"><span>Gaji Bersih (THP):</span><span id="thpResult" class="text-indigo-400 font-bold">Rp 0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 6: DISKON BERTINGKAT -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-orange-500/10 text-orange-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-tags"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">6. Kalkulator Diskon Bertingkat</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-2">Hitung harga promo promo (misal: 20% + 10%).</p>
+
+          <input type="number" id="discPrice" placeholder="Harga Awal (Rp)" oninput="calcDiscount()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white mb-2">
+          <div class="grid grid-cols-2 gap-2 mb-2">
+            <input type="number" id="disc1" placeholder="Diskon 1 (%)" oninput="calcDiscount()" class="bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+            <input type="number" id="disc2" placeholder="Diskon 2 (%)" oninput="calcDiscount()" class="bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs space-y-1">
+            <div class="flex justify-between"><span>Hemat:</span><span id="discSave" class="text-rose-400 font-bold">Rp 0</span></div>
+            <div class="flex justify-between"><span>Harga Akhir:</span><span id="discFinal" class="text-emerald-400 font-bold">Rp 0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 7: PENYUSUTAN ASET (DEPRESIASI) -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-hourglass-half"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">7. Depresiasi Aset Bisnis</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-2">Hitung penurunan nilai inventaris per tahun.</p>
+
+          <div class="space-y-2">
+            <input type="number" id="assetCost" placeholder="Harga Beli Aset (Rp)" oninput="calcDepreciation()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+            <div class="grid grid-cols-2 gap-2">
+              <input type="number" id="assetResidue" placeholder="Nilai Sisa (Rp)" oninput="calcDepreciation()" class="bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+              <input type="number" id="assetYears" placeholder="Masa (Tahun)" oninput="calcDepreciation()" class="bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-xs text-white">
+            </div>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs space-y-1 mt-3">
+            <div class="flex justify-between"><span>Penyusutan / Thn:</span><span id="depresResult" class="text-yellow-400 font-bold">Rp 0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 8: WHATSAPP LINK GENERATOR -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-teal-500/10 text-teal-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">8. Generator Link WhatsApp</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-2">Buat link & pesan otomatis untuk CS/Sales.</p>
+
+          <input type="text" id="waPhone" placeholder="Contoh: 628123456789" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white mb-2">
+          <textarea id="waText" rows="2" placeholder="Halo admin, saya mau pesan..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-white resize-none mb-2"></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="generateWALink()" class="py-1.5 bg-slate-800 hover:bg-slate-700 text-teal-400 text-xs font-semibold rounded-xl border border-slate-700">
+            <i class="fa-solid fa-copy mr-1"></i> Salin Link
+          </button>
+          <button onclick="openWALink()" class="py-1.5 bg-teal-600 hover:bg-teal-500 text-white text-xs font-semibold rounded-xl transition">
+            <i class="fa-solid fa-paper-plane mr-1"></i> Chat WA
+          </button>
+        </div>
+      </div>
+
+      <!-- TOOL 9: BUSINESS QR CODE -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">9. QR Code Pembayaran/Web</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-2">Ubah URL toko, menu, atau payment link jadi QR.</p>
+
+          <input type="text" id="qrText" placeholder="https://tokosaya.com" oninput="generateQR()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white mb-2">
+          
+          <div class="flex justify-center p-2 bg-white rounded-xl w-24 h-24 mx-auto" id="qrcode"></div>
+        </div>
+        <button onclick="downloadQR()" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-gray-200 text-xs font-semibold rounded-xl border border-slate-700 transition">
+          <i class="fa-solid fa-download mr-1"></i> Unduh Gambar QR
+        </button>
+      </div>
+
+      <!-- TOOL 10: DIGITAL SIGNATURE GENERATOR -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-signature"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">10. Tanda Tangan Digital</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-2">Gambar tanda tangan & unduh PNG transparan.</p>
+
+          <div class="bg-white rounded-xl overflow-hidden mb-2">
+            <canvas id="sigCanvas" width="280" height="100" class="w-full h-24 cursor-crosshair bg-white"></canvas>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="clearCanvas()" class="py-1.5 bg-slate-800 hover:bg-slate-700 text-gray-400 text-xs font-semibold rounded-xl border border-slate-700">Bersihkan</button>
+          <button onclick="downloadSignature()" class="py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold rounded-xl transition">Unduh PNG</button>
+        </div>
+      </div>
+
+      <!-- TOOL 11: ANALISIS SWOT BISNIS -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4 md:col-span-2">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-chess-board"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">11. Matriks Analisis SWOT Bisnis</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">Petakan strategi kekuatan, kelemahan, peluang, & ancaman bisnis.</p>
+
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div>
+              <label class="block text-[10px] text-emerald-400 font-bold">S - Strengths (Kekuatan)</label>
+              <textarea id="swotS" placeholder="Kelebihan produk..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 h-16 text-xs text-white resize-none"></textarea>
+            </div>
+            <div>
+              <label class="block text-[10px] text-rose-400 font-bold">W - Weaknesses (Kelemahan)</label>
+              <textarea id="swotW" placeholder="Kekurangan operasional..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 h-16 text-xs text-white resize-none"></textarea>
+            </div>
+            <div>
+              <label class="block text-[10px] text-blue-400 font-bold">O - Opportunities (Peluang)</label>
+              <textarea id="swotO" placeholder="Tren pasar baru..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 h-16 text-xs text-white resize-none"></textarea>
+            </div>
+            <div>
+              <label class="block text-[10px] text-amber-400 font-bold">T - Threats (Ancaman)</label>
+              <textarea id="swotT" placeholder="Pesaing baru..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 h-16 text-xs text-white resize-none"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 12: CATATAN OPERASIONAL -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 rounded-lg bg-teal-500/10 text-teal-400 flex items-center justify-center text-sm font-bold">
+                <i class="fa-solid fa-list-check"></i>
+              </div>
+              <h2 class="text-sm font-bold text-white">12. Catatan & To-Do List</h2>
+            </div>
+            <span id="saveStatus" class="text-[10px] text-emerald-400 font-semibold opacity-0 transition-opacity">Tersimpan!</span>
+          </div>
+
+          <textarea id="bizNotes" oninput="saveNotes()" rows="6" placeholder="Tulis rencana kerja, instruksi operasional, atau pengingat stok..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white resize-none"></textarea>
+        </div>
+        <button onclick="clearNotes()" class="w-full py-1 bg-slate-800 hover:bg-slate-700 text-gray-400 hover:text-rose-400 text-[10px] font-semibold rounded-xl border border-slate-700 transition">
+          Hapus Catatan
+        </button>
+      </div>
+
+      <!-- TOOL 13: GENERATOR INVOICE / FAKTUR -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4 md:col-span-3">
+        <div>
+          <div class="flex items-center space-x-3 mb-2">
+            <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-file-invoice-dollar"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">13. Pembuat Faktur / Invoice PDF Profesional</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-3">
+            <input type="text" id="invCompany" placeholder="Nama Perusahaan Anda" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white">
+            <input type="text" id="invClient" placeholder="Nama Klien / Buyer" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white">
+            <input type="text" id="invItem" placeholder="Deskripsi Barang / Jasa" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white">
+            <input type="number" id="invAmount" placeholder="Harga Total (Rp)" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white">
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <input type="number" id="invTax" placeholder="PPN (%) Contoh: 11" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white">
+            <input type="date" id="invDate" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white">
+            <input type="date" id="invDueDate" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white">
+          </div>
+        </div>
+
+        <button onclick="downloadInvoicePDF()" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition">
+          <i class="fa-solid fa-file-pdf mr-1"></i> Cetak & Unduh Invoice PDF
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- HIDDEN TEMPLATE FOR PDF INVOICE -->
+  <div class="hidden">
+    <div id="invoiceTemplate" class="p-8 bg-white text-slate-800 font-sans space-y-6">
+      <div class="flex justify-between items-center border-b pb-4">
+        <div>
+          <h1 class="text-2xl font-black text-slate-900" id="pdfMyCompany">NAMA PERUSAHAAN</h1>
+          <p class="text-xs text-slate-500">FAKTUR PENJUALAN OFFICIAL</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-emerald-600">INVOICE</p>
+          <p class="text-xs text-slate-500" id="pdfInvDate"></p>
+          <p class="text-xs text-slate-500" id="pdfInvDueDate"></p>
+        </div>
+      </div>
+
+      <div class="bg-slate-50 p-3 rounded-lg">
+        <p class="text-[10px] text-slate-400 uppercase font-bold">Ditujukan Kepada Klien:</p>
+        <p class="text-sm font-bold text-slate-800" id="pdfClientName">-</p>
+      </div>
+
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="border-b text-xs uppercase text-slate-500">
+            <th class="py-2">Deskripsi Produk / Layanan</th>
+            <th class="py-2 text-right">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="py-3 text-sm text-slate-700" id="pdfItemDesc">-</td>
+            <td class="py-3 text-sm text-right font-bold text-slate-900" id="pdfItemPrice">Rp 0</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="flex justify-between items-center pt-4 border-t">
+        <p class="text-xs text-slate-500">Terima kasih telah berbisnis dengan kami.</p>
+        <div class="text-right space-y-1">
+          <p class="text-xs text-slate-500" id="pdfTaxAmount">PPN: Rp 0</p>
+          <p class="text-base font-black text-slate-900" id="pdfTotalPrice">Total: Rp 0</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-gray-500">
+    <p>© 2026 Business Utility Hub — Enterprise Complete Edition • Client-Side Confidential Utility</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // 1. CASH LOGIC
+    let cashEntries = JSON.parse(localStorage.getItem('biz_cash_entries')) || [];
+
+    function addCashEntry() {
+      const desc = document.getElementById('cashDesc').value.trim();
+      const amount = parseFloat(document.getElementById('cashAmount').value) || 0;
+      const type = document.getElementById('cashType').value;
+
+      if (!desc || amount <= 0) return alert('Lengkapi keterangan dan nominal!');
+
+      const entry = {
+        id: Date.now(),
+        date: new Date().toLocaleDateString('id-ID'),
+        desc,
+        amount,
+        type
+      };
+
+      cashEntries.push(entry);
+      saveCashData();
+      renderCashTable();
+
+      document.getElementById('cashDesc').value = '';
+      document.getElementById('cashAmount').value = '';
+    }
+
+    function renderCashTable() {
+      const tbody = document.getElementById('cashTableBody');
+      tbody.innerHTML = '';
+
+      let totalIn = 0;
+      let totalOut = 0;
+
+      cashEntries.forEach(item => {
+        if (item.type === 'in') totalIn += item.amount;
+        else totalOut += item.amount;
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-900/50";
+        tr.innerHTML = `
+          <td class="py-1.5 px-2 text-[11px] text-gray-400">${item.date}</td>
+          <td class="py-1.5 px-2 text-[11px] font-medium text-white">${item.desc}</td>
+          <td class="py-1.5 px-2 text-[11px] font-bold ${item.type === 'in' ? 'text-emerald-400' : 'text-rose-400'}">${item.type === 'in' ? 'Masuk' : 'Keluar'}</td>
+          <td class="py-1.5 px-2 text-[11px] text-right font-mono">Rp ${item.amount.toLocaleString('id-ID')}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('totalCashIn').innerText = `Rp ${totalIn.toLocaleString('id-ID')}`;
+      document.getElementById('totalCashOut').innerText = `Rp ${totalOut.toLocaleString('id-ID')}`;
+      document.getElementById('totalCashNet').innerText = `Rp ${(totalIn - totalOut).toLocaleString('id-ID')}`;
+    }
+
+    function saveCashData() {
+      localStorage.setItem('biz_cash_entries', JSON.stringify(cashEntries));
+    }
+
+    function clearCashData() {
+      if (confirm('Yakin hapus seluruh catatan kas?')) {
+        cashEntries = [];
+        saveCashData();
+        renderCashTable();
+      }
+    }
+
+    function exportCashData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(cashEntries));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "backup_kas_bisnis.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    // 2. MARGIN CALCULATOR
+    function calcMargin() {
+      const hpp = parseFloat(document.getElementById('hppInput').value) || 0;
+      const margin = parseFloat(document.getElementById('marginInput').value) || 0;
+      if (margin >= 100) return;
+      const price = hpp / (1 - (margin / 100));
+      const profit = price - hpp;
+      document.getElementById('priceResult').innerText = `Rp ${Math.round(price).toLocaleString('id-ID')}`;
+      document.getElementById('profitResult').innerText = `Rp ${Math.round(profit).toLocaleString('id-ID')}`;
+    }
+
+    // 3. BEP CALCULATOR
+    function calcBEP() {
+      const fc = parseFloat(document.getElementById('fixedCost').value) || 0;
+      const p = parseFloat(document.getElementById('unitPrice').value) || 0;
+      const vc = parseFloat(document.getElementById('varCost').value) || 0;
+      const marginPerUnit = p - vc;
+      if (marginPerUnit <= 0) {
+        document.getElementById('bepUnits').innerText = '0 Unit';
+        document.getElementById('bepRevenue').innerText = 'Rp 0';
+        return;
+      }
+      const units = Math.ceil(fc / marginPerUnit);
+      document.getElementById('bepUnits').innerText = `${units.toLocaleString('id-ID')} Unit`;
+      document.getElementById('bepRevenue').innerText = `Rp ${(units * p).toLocaleString('id-ID')}`;
+    }
+
+    // 4. ROAS CALCULATOR
+    function calcROAS() {
+      const spend = parseFloat(document.getElementById('adSpend').value) || 0;
+      const rev = parseFloat(document.getElementById('adRevenue').value) || 0;
+      if (spend <= 0) return;
+      const roas = rev / spend;
+      const roi = ((rev - spend) / spend) * 100;
+      document.getElementById('roasResult').innerText = `${roas.toFixed(2)}x`;
+      document.getElementById('roiResult').innerText = `${roi.toFixed(1)}%`;
+    }
+
+    // 5. PAYROLL CALCULATOR
+    function calcPayroll() {
+      const base = parseFloat(document.getElementById('payBase').value) || 0;
+      const bonus = parseFloat(document.getElementById('payBonus').value) || 0;
+      const cut = parseFloat(document.getElementById('payCut').value) || 0;
+      const thp = (base + bonus) - cut;
+      document.getElementById('thpResult').innerText = `Rp ${thp.toLocaleString('id-ID')}`;
+    }
+
+    // 6. DISCOUNT CALCULATOR
+    function calcDiscount() {
+      const price = parseFloat(document.getElementById('discPrice').value) || 0;
+      const d1 = parseFloat(document.getElementById('disc1').value) || 0;
+      const d2 = parseFloat(document.getElementById('disc2').value) || 0;
+      
+      let p1 = price - (price * (d1 / 100));
+      let p2 = p1 - (p1 * (d2 / 100));
+      let saved = price - p2;
+
+      document.getElementById('discSave').innerText = `Rp ${Math.round(saved).toLocaleString('id-ID')}`;
+      document.getElementById('discFinal').innerText = `Rp ${Math.round(p2).toLocaleString('id-ID')}`;
+    }
+
+    // 7. DEPRECIATION CALCULATOR
+    function calcDepreciation() {
+      const cost = parseFloat(document.getElementById('assetCost').value) || 0;
+      const residue = parseFloat(document.getElementById('assetResidue').value) || 0;
+      const years = parseFloat(document.getElementById('assetYears').value) || 0;
+      if (years <= 0) return;
+      const dep = (cost - residue) / years;
+      document.getElementById('depresResult').innerText = `Rp ${Math.round(dep).toLocaleString('id-ID')}`;
+    }
+
+    // 8. WHATSAPP GENERATOR
+    function generateWALink() {
+      const phone = document.getElementById('waPhone').value.trim();
+      const text = encodeURIComponent(document.getElementById('waText').value.trim());
+      if (!phone) return alert('Masukkan nomor telepon!');
+      navigator.clipboard.writeText(`https://wa.me/${phone}?text=${text}`);
+      alert('Link disalin ke clipboard!');
+    }
+
+    function openWALink() {
+      const phone = document.getElementById('waPhone').value.trim();
+      const text = encodeURIComponent(document.getElementById('waText').value.trim());
+      if (!phone) return alert('Masukkan nomor telepon!');
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    }
+
+    // 9. QR CODE
+    function generateQR() {
+      const text = document.getElementById('qrText').value.trim() || "https://google.com";
+      const container = document.getElementById('qrcode');
+      container.innerHTML = "";
+      new QRCode(container, { text: text, width: 96, height: 96 });
+    }
+
+    function downloadQR() {
+      const img = document.querySelector('#qrcode img');
+      if (img) {
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.download = 'business-qr.png';
+        a.click();
+      }
+    }
+
+    // 10. CANVAS SIGNATURE
+    const canvas = document.getElementById('sigCanvas');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+
+    canvas.addEventListener('mousedown', () => drawing = true);
+    canvas.addEventListener('mouseup', () => { drawing = false; ctx.beginPath(); });
+    canvas.addEventListener('mousemove', draw);
+
+    function draw(e) {
+      if (!drawing) return;
+      const rect = canvas.getBoundingClientRect();
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#0f172a';
+      ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+    }
+
+    function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+    function downloadSignature() {
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = 'signature.png';
+      a.click();
+    }
+
+    // 12. NOTES
+    function saveNotes() {
+      localStorage.setItem('biz_hub_notes', document.getElementById('bizNotes').value);
+      const status = document.getElementById('saveStatus');
+      status.style.opacity = '1';
+      setTimeout(() => { status.style.opacity = '0'; }, 1000);
+    }
+
+    function loadNotes() {
+      const saved = localStorage.getItem('biz_hub_notes');
+      if (saved) document.getElementById('bizNotes').value = saved;
+    }
+
+    function clearNotes() {
+      document.getElementById('bizNotes').value = '';
+      localStorage.removeItem('biz_hub_notes');
+    }
+
+    // 13. INVOICE PDF
+    function downloadInvoicePDF() {
+      const company = document.getElementById('invCompany').value.trim() || "NAMA PERUSAHAAN";
+      const client = document.getElementById('invClient').value.trim() || "KLIEN UNGGULAN";
+      const item = document.getElementById('invItem').value.trim() || "Layanan / Produk";
+      const amount = parseFloat(document.getElementById('invAmount').value) || 0;
+      const taxRate = parseFloat(document.getElementById('invTax').value) || 0;
+      const date = document.getElementById('invDate').value || new Date().toISOString().split('T')[0];
+      const dueDate = document.getElementById('invDueDate').value || "-";
+
+      const taxAmount = (amount * taxRate) / 100;
+      const total = amount + taxAmount;
+
+      document.getElementById('pdfMyCompany').innerText = company;
+      document.getElementById('pdfClientName').innerText = client;
+      document.getElementById('pdfItemDesc').innerText = item;
+      document.getElementById('pdfItemPrice').innerText = `Rp ${amount.toLocaleString('id-ID')}`;
+      document.getElementById('pdfTaxAmount').innerText = `PPN (${taxRate}%): Rp ${taxAmount.toLocaleString('id-ID')}`;
+      document.getElementById('pdfTotalPrice').innerText = `Total: Rp ${total.toLocaleString('id-ID')}`;
+      document.getElementById('pdfInvDate').innerText = `Tgl: ${date}`;
+      document.getElementById('pdfInvDueDate').innerText = `Jatuh Tempo: ${dueDate}`;
+
+      const element = document.getElementById('invoiceTemplate');
+      html2pdf().from(element).save(`Invoice_${client.replace(/\s+/g, '_')}.pdf`);
+    }
+
+    // INIT
+    window.onload = function() {
+      renderCashTable();
+      generateQR();
+      loadNotes();
+    };
+  </script>
+</body>
+</html>
