@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decorindo Perkasa - Katalog Wallpaper Interior Modern</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#fbf8f1',
+                            100: '#f5eedc',
+                            200: '#e7d9b5',
+                            500: '#d4af37',
+                            600: '#aa820a',
+                            700: '#8c6703',
+                        },
+                        dark: '#1e293b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .product-card:hover .product-img {
+            transform: scale(1.08);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Header & Navigasi -->
+    <header class="sticky top-0 z-40 bg-white shadow-md">
+        <!-- Top Bar -->
+        <div class="bg-dark text-gray-300 text-xs py-2 px-4">
+            <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+                <div class="flex items-center space-x-4">
+                    <span><i class="fas fa-phone text-gold-500 mr-1"></i> +62 812-3456-7890</span>
+                    <span><i class="fas fa-envelope text-gold-500 mr-1"></i> info@decorindoperkasa.com</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="hover:text-gold-500 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-gold-500 transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-gold-500 transition"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-gradient-to-tr from-gold-600 to-gold-500 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    D
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-dark block leading-none">DECORINDO</span>
+                    <span class="text-xs text-gold-600 tracking-widest font-semibold">PERKASA</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <ul class="hidden md:flex space-x-8 text-sm font-medium">
+                <li><a href="#" class="text-gold-600 font-semibold hover:text-gold-700 transition">Beranda</a></li>
+                <li><a href="#katalog" class="text-gray-600 hover:text-gold-600 transition">Produk</a></li>
+                <li><a href="#katalog" class="text-gray-600 hover:text-gold-600 transition">Kategori</a></li>
+                <li><a href="#tentang" class="text-gray-600 hover:text-gold-600 transition">Tentang Kami</a></li>
+                <li><a href="#kontak" class="text-gray-600 hover:text-gold-600 transition">Kontak</a></li>
+            </ul>
+
+            <!-- Search & Actions -->
+            <div class="flex items-center space-x-3">
+                <div class="relative w-48 sm:w-64">
+                    <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Cari wallpaper..." class="w-full pl-9 pr-4 py-2 text-sm bg-gray-100 border border-gray-200 rounded-full focus:outline-none focus:border-gold-500 focus:bg-white transition">
+                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-dark text-white overflow-hidden py-16 lg:py-24">
+        <div class="absolute inset-0 z-0 opacity-40 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 relative z-20 flex flex-col items-start justify-center h-full">
+            <span class="bg-gold-500/20 text-gold-500 border border-gold-500/30 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-4">
+                Koleksi Mewah & Elegan
+            </span>
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight max-w-2xl">
+                Transformasi Ruangan Anda dengan Wallpaper Eksklusif
+            </h1>
+            <p class="text-gray-300 text-sm md:text-base mb-8 max-w-xl">
+                Temukan katalog lengkap dekorasi dinding kelas dunia. Motif kayu, floral, geometris, hingga minimalis modern untuk hunian impian Anda.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#katalog" class="bg-gold-500 hover:bg-gold-600 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition flex items-center gap-2">
+                    <i class="fas fa-th-large"></i> Lihat Katalog
+                </a>
+                <a href="https://wa.me/6281234567890" target="_blank" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-6 py-3 rounded-lg backdrop-blur-sm transition flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-green-400"></i> Konsultasi Gratis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Catalog Section -->
+    <main id="katalog" class="max-w-7xl mx-auto px-4 py-12 flex-grow">
+        <!-- Title & Filter Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+                <div class="flex items-center gap-2 text-xs text-gold-600 font-semibold mb-1">
+                    <span>BERANDA</span> <i class="fas fa-chevron-right text-[10px]"></i> <span>WALLPAPER</span> <i class="fas fa-chevron-right text-[10px]"></i> <span>HALAMAN 2</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-dark">Katalog Wallpaper Interior</h2>
+                <p class="text-gray-500 text-sm">Menampilkan koleksi eksklusif Halaman 2 dari Decorindo Perkasa</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap gap-2" id="categoryFilters">
+                <button onclick="setCategory('All')" class="cat-btn active bg-gold-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-sm">Semua</button>
+                <button onclick="setCategory('Modern')" class="cat-btn bg-white text-gray-600 border border-gray-200 hover:border-gold-500 hover:text-gold-600 px-4 py-2 rounded-lg text-sm font-medium transition">Modern</button>
+                <button onclick="setCategory('Klasik')" class="cat-btn bg-white text-gray-600 border border-gray-200 hover:border-gold-500 hover:text-gold-600 px-4 py-2 rounded-lg text-sm font-medium transition">Klasik</button>
+                <button onclick="setCategory('Minimalis')" class="cat-btn bg-white text-gray-600 border border-gray-200 hover:border-gold-500 hover:text-gold-600 px-4 py-2 rounded-lg text-sm font-medium transition">Minimalis</button>
+                <button onclick="setCategory('Textures')" class="cat-btn bg-white text-gray-600 border border-gray-200 hover:border-gold-500 hover:text-gold-600 px-4 py-2 rounded-lg text-sm font-medium transition">Tekstur</button>
+                <button onclick="setCategory('Anak-anak')" class="cat-btn bg-white text-gray-600 border border-gray-200 hover:border-gold-500 hover:text-gold-600 px-4 py-2 rounded-lg text-sm font-medium transition">Anak-anak</button>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Product Cards generated via Javascript -->
+        </div>
+
+        <!-- No Products Found Message -->
+        <div id="noProducts" class="hidden text-center py-16">
+            <i class="fas fa-search-minus text-5xl text-gray-300 mb-4"></i>
+            <h3 class="text-lg font-semibold text-gray-700">Tidak ada produk ditemukan</h3>
+            <p class="text-gray-500 text-sm">Coba ubah filter kategori atau kata kunci pencarian Anda.</p>
+        </div>
+
+        <!-- Pagination UI -->
+        <div class="mt-12 flex flex-col sm:flex-row items-center justify-between border-t border-gray-200 pt-6 gap-4">
+            <span class="text-sm text-gray-500">Menampilkan <span class="font-semibold text-dark">9-16</span> dari <span class="font-semibold text-dark">32</span> produk</span>
+            <div class="inline-flex rounded-md shadow-sm -space-x-px">
+                <a href="#" class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <i class="fas fa-chevron-left text-xs"></i> Prev
+                </a>
+                <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">1</a>
+                <a href="#" class="px-4 py-2 border border-gold-500 bg-gold-50 text-sm font-semibold text-gold-600 z-10">2</a>
+                <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
+                <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">4</a>
+                <a href="#" class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    Next <i class="fas fa-chevron-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Detail Produk -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl relative transform transition-all">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <!-- Modal Image -->
+                <div class="bg-gray-100 h-64 md:h-auto relative">
+                    <img id="modalImage" src="" alt="" class="w-full h-full object-cover">
+                    <span id="modalCategory" class="absolute top-4 left-4 bg-gold-500 text-white text-xs px-3 py-1 rounded-full font-semibold"></span>
+                </div>
+
+                <!-- Modal Content -->
+                <div class="p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-1 text-amber-400 text-xs mb-2" id="modalRating">
+                            <!-- Dynamic Stars -->
+                        </div>
+                        <h3 id="modalTitle" class="text-xl font-bold text-dark mb-2"></h3>
+                        <p id="modalPrice" class="text-2xl font-bold text-gold-600 mb-4"></p>
+                        <p id="modalDesc" class="text-gray-600 text-sm mb-6 leading-relaxed"></p>
+
+                        <!-- Specifications -->
+                        <div class="border-t border-b border-gray-100 py-3 mb-6 space-y-2 text-xs">
+                            <div class="flex justify-between"><span class="text-gray-500">Ukuran Roll:</span> <span class="font-semibold text-gray-800">0.53m x 10m (5m²)</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Bahan:</span> <span class="font-semibold text-gray-800">Vinyl Backed Paper Heavy Duty</span></div>
+                            <div class="flex justify-between"><span class="text-gray-500">Fitur:</span> <span class="font-semibold text-gray-800">Tahan Air, Mudah Dibersihkan</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="space-y-2">
+                        <a id="modalWaBtn" href="#" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl shadow transition flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-lg"></i> Pesan via WhatsApp
+                        </a>
+                        <button onclick="closeModal()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 rounded-xl text-sm transition">
+                            Tutup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-dark text-gray-400 text-sm pt-12 pb-6 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <!-- Brand Info -->
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="w-8 h-8 bg-gold-500 rounded flex items-center justify-center text-white font-bold text-lg">D</div>
+                    <span class="text-lg font-bold text-white tracking-wide">DECORINDO PERKASA</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                    Penyedia produk dekorasi interior terpercaya, khusus wallpaper dinding premium untuk rumah, kantor, dan hotel.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Tautan Cepat</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-gold-500 transition">Beranda</a></li>
+                    <li><a href="#katalog" class="hover:text-gold-500 transition">Katalog Produk</a></li>
+                    <li><a href="#" class="hover:text-gold-500 transition">Cara Pemesanan</a></li>
+                    <li><a href="#" class="hover:text-gold-500 transition">Galeri Proyek</a></li>
+                </ul>
+            </div>
+
+            <!-- Categories -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Kategori Wallpaper</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#katalog" onclick="setCategory('Modern')" class="hover:text-gold-500 transition">Wallpaper Modern Minimalis</a></li>
+                    <li><a href="#katalog" onclick="setCategory('Klasik')" class="hover:text-gold-500 transition">Wallpaper Klasik Mewah</a></li>
+                    <li><a href="#katalog" onclick="setCategory('Textures')" class="hover:text-gold-500 transition">Wallpaper Tekstur Kayu & Batu</a></li>
+                    <li><a href="#katalog" onclick="setCategory('Anak-anak')" class="hover:text-gold-500 transition">Wallpaper Anak & Motif Lucu</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Hubungi Kami</h4>
+                <ul class="space-y-3 text-xs">
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-map-marker-alt text-gold-500 mt-1"></i>
+                        <span>Jl. Interior Raya No. 88, Jakarta Selatan, Indonesia</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone text-gold-500"></i>
+                        <span>+62 812-3456-7890</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-gold-500"></i>
+                        <span>sales@decorindoperkasa.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
+            &copy; 2026 Decorindo Perkasa. Semua Hak Cipta Dilindungi.
+        </div>
+    </footer>
+
+    <script>
+        // Data Produk Wallpaper (Katalog Page 2)
+        const products = [
+            {
+                id: 1,
+                title: "Wallpaper Tekstur Kayu Minimalis",
+                category: "Textures",
+                price: "Rp 185.000",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=600&auto=format&fit=crop",
+                desc: "Wallpaper dengan motif serat kayu alami yang memberikan nuansa hangat dan natural pada ruangan minimalis modern."
+            },
+            {
+                id: 2,
+                title: "Wallpaper Floral Klasik Gold",
+                category: "Klasik",
+                price: "Rp 245.000",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600&auto=format&fit=crop",
+                desc: "Desain floral elegan bertekstur timbul dengan aksen warna emas untuk menghadirkan kesan mewah ala kerajaan di ruang tamu."
+            },
+            {
+                id: 3,
+                title: "Wallpaper Geometric Gold Line",
+                category: "Modern",
+                price: "Rp 210.000",
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop",
+                desc: "Pola garis-garis geometris modern berornamen emas lembut. Sangat cocok untuk dinding utama (accent wall) ruang keluarga."
+            },
+            {
+                id: 4,
+                title: "Wallpaper Beton Industrial Grey",
+                category: "Minimalis",
+                price: "Rp 175.000",
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=600&auto=format&fit=crop",
+                desc: "Efek semen poles industrial dengan tekstur realistis. Pilihan sempurna untuk gaya interior kontemporer dan loft modern."
+            },
+            {
+                id: 5,
+                title: "Wallpaper Motif Awan Pastel Kids",
+                category: "Anak-anak",
+                price: "Rp 165.000",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=600&auto=format&fit=crop",
+                desc: "Motif imut dan warna lembut aman untuk kamar anak. Berbahan aman ramah lingkungan dan mudah dibersihkan dari noda."
+            },
+            {
+                id: 6,
+                title: "Wallpaper Luxury Marble Textures",
+                category: "Textures",
+                price: "Rp 260.000",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=600&auto=format&fit=crop",
+                desc: "Efek marmer Italia mewah dengan guratan halus yang mengilap, memberikan kesan interior eksklusif kelas atas."
+            },
+            {
+                id: 7,
+                title: "Wallpaper Botanical Tropical Green",
+                category: "Modern",
+                price: "Rp 195.000",
+                rating: 4,
+                image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=600&auto=format&fit=crop",
+                desc: "Nuansa dedaunan tropis segar dengan warna hijau alami yang menyejukkan mata dan menciptakan suasana asri di rumah."
+            },
+            {
+                id: 8,
+                title: "Wallpaper Damask Elegant Cream",
+                category: "Klasik",
+                price: "Rp 230.000",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=600&auto=format&fit=crop",
+                desc: "Pola ornamen Damask klasik bernuansa krem dan emas muda yang tak lekang oleh waktu untuk kamar tidur utama."
+            }
+        ];
+
+        let currentCategory = 'All';
+
+        // Render Cards
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            const noProducts = document.getElementById('noProducts');
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                noProducts.classList.remove('hidden');
+                return;
+            } else {
+                noProducts.classList.add('hidden');
+            }
+
+            items.forEach(p => {
+                const stars = Array(p.rating).fill('<i class="fas fa-star"></i>').join('');
+                const waMessage = encodeURIComponent(`Halo Decorindo Perkasa, saya tertarik dengan produk ${p.title} (${p.price}). Mohon info stok dan pemasangan.`);
+
+                const cardHtml = `
+                    <div class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between group">
+                        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100">
+                            <img src="${p.image}" alt="${p.title}" class="product-img w-full h-full object-cover transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-dark text-xs font-semibold px-2.5 py-1 rounded-md shadow-sm">
+                                ${p.category}
+                            </span>
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow justify-between">
+                            <div>
+                                <div class="flex items-center space-x-1 text-amber-400 text-xs mb-1">
+                                    ${stars}
+                                </div>
+                                <h3 class="font-bold text-gray-800 text-base group-hover:text-gold-600 transition line-clamp-1 mb-1">${p.title}</h3>
+                                <p class="text-xs text-gray-500 mb-3 line-clamp-2">${p.desc}</p>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-gold-600 mb-4">${p.price} <span class="text-xs font-normal text-gray-400">/ roll</span></div>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <button onclick="openModal(${p.id})" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1">
+                                        <i class="fas fa-eye"></i> Detail
+                                    </button>
+                                    <a href="https://wa.me/6281234567890?text=${waMessage}" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-xl text-xs transition flex items-center justify-center gap-1 shadow-sm">
+                                        <i class="fab fa-whatsapp"></i> Pesan
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        // Filter Functionality
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(p => {
+                const matchesCategory = currentCategory === 'All' || p.category === currentCategory;
+                const matchesSearch = p.title.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+            renderProducts(filtered);
+        }
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            
+            // Update Active Buttons
+            const buttons = document.querySelectorAll('#categoryFilters .cat-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.toLowerCase() === cat.toLowerCase() || (cat === 'All' && btn.innerText === 'Semua') || (cat === 'Textures' && btn.innerText === 'Tekstur')) {
+                    btn.className = 'cat-btn active bg-gold-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-sm';
+                } else {
+                    btn.className = 'cat-btn bg-white text-gray-600 border border-gray-200 hover:border-gold-500 hover:text-gold-600 px-4 py-2 rounded-lg text-sm font-medium transition';
+                }
+            });
+
+            filterProducts();
+        }
+
+        // Modal Functionality
+        function openModal(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            document.getElementById('modalImage').src = product.image;
+            document.getElementById('modalTitle').innerText = product.title;
+            document.getElementById('modalCategory').innerText = product.category;
+            document.getElementById('modalPrice').innerText = `${product.price} / roll`;
+            document.getElementById('modalDesc').innerText = product.desc;
+            
+            const ratingContainer = document.getElementById('modalRating');
+            ratingContainer.innerHTML = Array(product.rating).fill('<i class="fas fa-star"></i>').join('');
+
+            const waMsg = encodeURIComponent(`Halo Decorindo Perkasa, saya berminat dengan produk ${product.title} (${product.price}). Boleh minta informasi detail dan katalog terkait?`);
+            document.getElementById('modalWaBtn').href = `https://wa.me/6281234567890?text=${waMsg}`;
+
+            document.getElementById('productModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Initial Render
+        window.onload = function() {
+            renderProducts(products);
+        };
+    </script>
+</body>
+</html>
