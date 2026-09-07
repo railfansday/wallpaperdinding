@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expired Domain SEO Evaluator & Content Rebuilder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            app: {
+              dark: '#0d1117',
+              card: '#161b22',
+              accent: '#8b5cf6',
+              emerald: '#10b981'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-app-dark text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-app-dark/90 backdrop-blur-md border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-purple-500/20">
+          <i class="fa-solid fa-globe text-sm"></i>
+        </div>
+        <div>
+          <span class="text-lg font-black tracking-tight text-white block leading-none">EXPIRED<span class="text-purple-400">DOMAIN</span></span>
+          <span class="text-[10px] text-gray-400 tracking-wider uppercase font-semibold">SEO Evaluator & Article Rebuilder</span>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2 text-xs font-semibold">
+        <span class="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 flex items-center space-x-1">
+          <i class="fa-solid fa-clock-rotate-left text-[10px]"></i>
+          <span>PBN & Domain Recovery</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- LEFT PANEL: INPUT & EVALUATION -->
+    <div class="lg:col-span-5 space-y-6">
+      
+      <!-- DOMAIN CHECKER FORM -->
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <h2 class="text-base font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-magnifying-glass text-purple-400"></i>
+          <span>Analisis Domain Expired</span>
+        </h2>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Nama Domain (misal: domainlama.com)</label>
+          <input type="text" id="domainInput" placeholder="domainlama.com" oninput="analyzeDomain()" class="w-full bg-slate-900 border border-gray-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-purple-400">
+        </div>
+
+        <!-- METRICS DISPLAY -->
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <div class="bg-slate-900 p-3 rounded-xl border border-gray-800">
+            <span class="text-[10px] text-gray-400 uppercase font-bold block">Wayback Machine</span>
+            <a id="linkWayback" href="#" target="_blank" class="text-xs text-purple-400 font-semibold hover:underline flex items-center space-x-1 mt-1">
+              <span>Cek Arsip Web</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+            </a>
+          </div>
+          <div class="bg-slate-900 p-3 rounded-xl border border-gray-800">
+            <span class="text-[10px] text-gray-400 uppercase font-bold block">Google Index</span>
+            <a id="linkIndex" href="#" target="_blank" class="text-xs text-emerald-400 font-semibold hover:underline flex items-center space-x-1 mt-1">
+              <span>Cek Sisa Index</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENT REBUILDER FORM -->
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-rotate-left text-indigo-400"></i>
+          <span>Rebuild Artikel & Struktur H1/H2</span>
+        </h3>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Judul Utama / Target Keyword Lama (H1)</label>
+          <input type="text" id="articleTitle" oninput="updatePreview()" placeholder="Judul artikel lama yang ingin dihidupkan..." class="w-full bg-slate-900 border border-gray-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-400">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Meta Description SEO</label>
+          <textarea id="metaDesc" oninput="updatePreview()" rows="2" placeholder="Deskripsi meta artikel..." class="w-full bg-slate-900 border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-indigo-400 resize-none"></textarea>
+        </div>
+
+        <!-- DYNAMIC SECTIONS -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-gray-300">Bagian Artikel (H2)</span>
+            <button onclick="addSection()" class="text-[11px] bg-purple-600 hover:bg-purple-500 text-white font-bold px-2.5 py-1 rounded-lg transition">
+              <i class="fa-solid fa-plus text-[9px] mr-1"></i> Tambah H2
+            </button>
+          </div>
+
+          <div id="sectionContainer" class="space-y-3 max-h-[250px] overflow-y-auto pr-1">
+            <!-- Dynamic Subsections -->
+          </div>
+        </div>
+
+        <button onclick="exportDomainArticle()" class="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold rounded-xl transition text-xs shadow-lg shadow-purple-500/20 flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Ekspor HTML Rebuild (.html)</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- RIGHT PANEL: PREVIEW & SEO CHECK -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl flex-grow flex flex-col">
+        <div class="flex items-center justify-between pb-4 border-b border-gray-800 mb-4">
+          <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-eye text-purple-400 text-sm"></i>
+            <span class="text-sm font-bold text-white">Live Rebuild Preview</span>
+          </div>
+          <span id="wordCount" class="text-[11px] font-mono text-gray-400 bg-slate-900 px-2.5 py-1 rounded-md border border-gray-800">0 Kata</span>
+        </div>
+
+        <div id="previewContainer" class="flex-grow bg-slate-900/60 border border-gray-800/80 rounded-xl p-6 overflow-y-auto max-h-[600px] text-gray-300 text-sm leading-relaxed space-y-4">
+          <!-- Live HTML Content Rendered Here -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 border-t border-gray-800 py-6 text-center text-xs text-gray-500">
+    <p>© 2026 Expired Domain SEO Evaluator • Single File HTML Tool</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    let sectionCount = 0;
+
+    window.onload = () => {
+      addSection("Sejarah & Latar Belakang Domain", "Tuliskan konten pemulihan untuk topik lama domain ini agar relevansi niche (topic authority) tetap terjaga.");
+      addSection("Analisis Utama / Layanan Utama", "Tambahkan informasi lengkap atau ulasan produk/jasa yang pernah dibahas oleh domain lama.");
+    };
+
+    function analyzeDomain() {
+      const domain = document.getElementById('domainInput').value.trim().replace(/^(https?:\/\/)?(www\.)?/, '');
+      const linkWayback = document.getElementById('linkWayback');
+      const linkIndex = document.getElementById('linkIndex');
+
+      if (domain) {
+        linkWayback.href = `https://web.archive.org/web/*/${domain}`;
+        linkIndex.href = `https://www.google.com/search?q=site:${domain}`;
+      } else {
+        linkWayback.href = "#";
+        linkIndex.href = "#";
+      }
+    }
+
+    function addSection(defaultTitle = "", defaultContent = "") {
+      sectionCount++;
+      const container = document.getElementById('sectionContainer');
+      const secId = `sec_${sectionCount}`;
+
+      const div = document.createElement('div');
+      div.id = secId;
+      div.className = "bg-slate-900/80 border border-gray-800 p-3 rounded-xl space-y-2 relative";
+      div.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-bold text-purple-400 uppercase">Sub-Heading H2 #${sectionCount}</span>
+          <button onclick="removeSection('${secId}')" class="text-gray-500 hover:text-rose-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+        </div>
+        <input type="text" class="sec-title w-full bg-slate-950 border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-purple-400" placeholder="Sub-judul H2..." value="${defaultTitle}" oninput="updatePreview()">
+        <textarea class="sec-content w-full bg-slate-950 border border-gray-700 rounded-lg p-2 text-xs text-gray-300 focus:outline-none focus:border-purple-400 resize-y min-h-[60px]" placeholder="Paragraf artikel..." oninput="updatePreview()">${defaultContent}</textarea>
+      `;
+      container.appendChild(div);
+      updatePreview();
+    }
+
+    function removeSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.remove();
+        updatePreview();
+      }
+    }
+
+    function updatePreview() {
+      const title = document.getElementById('articleTitle').value.trim() || "Rebuild Artikel Expired Domain";
+      const meta = document.getElementById('metaDesc').value.trim();
+      const preview = document.getElementById('previewContainer');
+
+      const secTitles = document.querySelectorAll('.sec-title');
+      const secContents = document.querySelectorAll('.sec-content');
+
+      let totalWords = 0;
+      let htmlOutput = `<h1 class="text-2xl font-extrabold text-white mb-2 leading-tight">${title}</h1>`;
+
+      if (meta) {
+        htmlOutput += `<p class="text-xs text-purple-300/80 italic mb-4 pb-3 border-b border-gray-800">${meta}</p>`;
+      }
+
+      secTitles.forEach((tInput, idx) => {
+        const h2Text = tInput.value.trim();
+        const bodyText = secContents[idx].value.trim();
+
+        if (h2Text || bodyText) {
+          totalWords += (h2Text + " " + bodyText).split(/\s+/).filter(x => x.length > 0).length;
+
+          htmlOutput += `
+            <section class="space-y-2 pt-2">
+              ${h2Text ? `<h2 class="text-lg font-bold text-purple-300 border-b border-gray-800/80 pb-1">${h2Text}</h2>` : ''}
+              ${bodyText ? `<p class="text-gray-300 leading-relaxed text-sm whitespace-pre-line">${bodyText}</p>` : ''}
+            </section>
+          `;
+        }
+      });
+
+      preview.innerHTML = htmlOutput;
+      document.getElementById('wordCount').innerText = `${totalWords} Kata`;
+    }
+
+    function exportDomainArticle() {
+      const domain = document.getElementById('domainInput').value.trim() || "expired-domain";
+      const title = document.getElementById('articleTitle').value.trim() || "Domain Recovered Article";
+      const meta = document.getElementById('metaDesc').value.trim() || title;
+      const previewContent = document.getElementById('previewContainer').innerHTML;
+
+      const fullCode = `<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${title}</title>
+  <meta name="description" content="${meta.replace(/"/g, '&quot;')}">
+  <script src="https://cdn.tailwindcss.com"><\/script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "${title.replace(/"/g, '\\"')}",
+    "description": "${meta.replace(/"/g, '\\"')}"
+  }
+  <\/script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased py-10 px-4 sm:px-6">
+  <article class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-200 space-y-4">
+    ${previewContent}
+  </article>
+</body>
+</html>`;
+
+      const blob = new Blob([fullCode], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${domain.toLowerCase().replace(/[^a-z0-9]/g, '-')}-rebuild.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
