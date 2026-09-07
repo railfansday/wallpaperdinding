@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everyday Web Utility Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- QR Code Generator Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            app: {
+              dark: '#0a0f1d',
+              card: '#111827',
+              accent: '#3b82f6',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              purple: '#8b5cf6'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-app-dark text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-app-dark/90 backdrop-blur-md border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-blue-500/20">
+          <i class="fa-solid fa-toolbox text-sm"></i>
+        </div>
+        <div>
+          <span class="text-lg font-black tracking-tight text-white block leading-none">EVERYDAY<span class="text-blue-400">HUB</span></span>
+          <span class="text-[10px] text-gray-400 tracking-wider uppercase font-semibold">Utilitas Harian Serbaguna Semua Orang</span>
+        </div>
+      </div>
+      <div class="text-xs text-gray-400 font-medium hidden sm:block">
+        <i class="fa-solid fa-lock text-emerald-400 mr-1"></i> 100% Aman & Berjalan Lokal di Browser
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8">
+    
+    <!-- HEADER HERO -->
+    <div class="text-center max-w-2xl mx-auto space-y-2">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white">Satu Tempat untuk Semua Kebutuhan Digital Harian</h1>
+      <p class="text-xs sm:text-sm text-gray-400">Kumpulan alat praktis tanpa instalasi, bebas iklan, dan tidak menyimpan data pribadi Anda.</p>
+    </div>
+
+    <!-- GRID TOOLBOX -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- TOOL 1: NETWORK & IP CHECKER -->
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">Cek IP & Jaringan</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-4">Lihat alamat IP publik, penyedia internet (ISP), dan estimasi jaringan Anda saat ini.</p>
+          
+          <div class="bg-slate-900 border border-gray-800 rounded-xl p-3 space-y-2 font-mono text-xs">
+            <div class="flex justify-between">
+              <span class="text-gray-500">IP Publik:</span>
+              <span id="ipAddress" class="text-blue-400 font-bold">Memuat...</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">Lokasi:</span>
+              <span id="ipLocation" class="text-gray-300">Memuat...</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">ISP:</span>
+              <span id="ipIsp" class="text-gray-300">Memuat...</span>
+            </div>
+          </div>
+        </div>
+        <button onclick="fetchIPInfo()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-gray-200 text-xs font-semibold rounded-xl border border-gray-700 transition">
+          <i class="fa-solid fa-rotate-right mr-1"></i> Perbarui Info IP
+        </button>
+      </div>
+
+      <!-- TOOL 2: PASSWORD GENERATOR -->
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-key"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">Generator Sandi Aman</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-4">Buat kata sandi yang kuat dan tidak mudah diretas secara instan.</p>
+
+          <div class="space-y-3">
+            <div class="relative">
+              <input type="text" id="passOutput" readonly class="w-full bg-slate-900 border border-gray-800 rounded-xl px-3 py-2 text-xs font-mono text-emerald-400 font-bold focus:outline-none">
+              <button onclick="copyPassword()" class="absolute right-2 top-2 text-xs text-gray-400 hover:text-white">
+                <i class="fa-solid fa-copy"></i>
+              </button>
+            </div>
+            <div>
+              <div class="flex justify-between text-[11px] text-gray-400 mb-1">
+                <span>Panjang Karakter:</span>
+                <span id="passLenVal" class="font-bold text-white">16</span>
+              </div>
+              <input type="range" id="passLen" min="8" max="32" value="16" oninput="generatePassword()" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer">
+            </div>
+          </div>
+        </div>
+        <button onclick="generatePassword()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-gray-200 text-xs font-semibold rounded-xl border border-gray-700 transition">
+          <i class="fa-solid fa-dice mr-1"></i> Buat Sandi Baru
+        </button>
+      </div>
+
+      <!-- TOOL 3: QR CODE GENERATOR -->
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">Pembuat Kode QR</h2>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">Ubah link, teks, atau nomor WhatsApp menjadi kode QR siap scan.</p>
+
+          <input type="text" id="qrText" placeholder="Masukkan URL atau Teks..." oninput="generateQR()" class="w-full bg-slate-900 border border-gray-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-400 mb-3">
+          
+          <div class="flex justify-center p-2 bg-white rounded-xl w-28 h-28 mx-auto" id="qrcode"></div>
+        </div>
+      </div>
+
+      <!-- TOOL 4: TEXT UTILITY & COUNTER -->
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-font"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">Pembersih & Penghitung Teks</h2>
+          </div>
+
+          <textarea id="textInput" oninput="analyzeText()" rows="3" placeholder="Tulis atau tempel teks di sini..." class="w-full bg-slate-900 border border-gray-800 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-amber-400 resize-none mb-3"></textarea>
+
+          <div class="grid grid-cols-2 gap-2 font-mono text-[11px] text-gray-400 bg-slate-900 p-2.5 rounded-xl border border-gray-800 mb-3">
+            <div>Karakter: <span id="charCount" class="text-amber-400 font-bold">0</span></div>
+            <div>Kata: <span id="wordCount" class="text-amber-400 font-bold">0</span></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-[11px]">
+          <button onclick="transformText('upper')" class="py-1.5 bg-slate-800 hover:bg-slate-700 text-gray-300 rounded-lg border border-gray-700">KAPITAL</button>
+          <button onclick="transformText('lower')" class="py-1.5 bg-slate-800 hover:bg-slate-700 text-gray-300 rounded-lg border border-gray-700">kecil</button>
+        </div>
+      </div>
+
+      <!-- TOOL 5: DISCOUNT & SHOPPING CALCULATOR -->
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center space-x-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-percent"></i>
+            </div>
+            <h2 class="text-sm font-bold text-white">Kalkulator Diskon & Belanja</h2>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 mb-3">
+            <div>
+              <label class="block text-[10px] text-gray-400 mb-1">Harga Asli (Rp)</label>
+              <input type="number" id="priceInput" placeholder="100000" oninput="calcDiscount()" class="w-full bg-slate-900 border border-gray-800 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-[10px] text-gray-400 mb-1">Diskon (%)</label>
+              <input type="number" id="discInput" placeholder="20" oninput="calcDiscount()" class="w-full bg-slate-900 border border-gray-800 rounded-xl px-2.5 py-1.5 text-xs text-white focus:outline-none">
+            </div>
+          </div>
+
+          <div class="bg-slate-900 border border-gray-800 rounded-xl p-3 space-y-1 text-xs">
+            <div class="flex justify-between text-gray-400">
+              <span>Hemat:</span>
+              <span id="saveAmount" class="text-emerald-400 font-bold">Rp 0</span>
+            </div>
+            <div class="flex justify-between text-gray-200 font-bold pt-1 border-t border-gray-800">
+              <span>Bayar:</span>
+              <span id="finalPrice" class="text-rose-400">Rp 0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOL 6: QUICK NOTES (LOCAL STORAGE) -->
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between space-y-4">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm font-bold">
+                <i class="fa-solid fa-note-sticky"></i>
+              </div>
+              <h2 class="text-sm font-bold text-white">Catatan Cepat Cepat</h2>
+            </div>
+            <span id="saveStatus" class="text-[10px] text-emerald-400 font-semibold opacity-0 transition-opacity">Tersimpan!</span>
+          </div>
+
+          <textarea id="quickNotes" oninput="saveNotes()" rows="4" placeholder="Tulis catatan sementara di sini. Otomatis tersimpan di browser Anda..." class="w-full bg-slate-900 border border-gray-800 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-indigo-400 resize-none"></textarea>
+        </div>
+        <button onclick="clearNotes()" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-gray-400 hover:text-rose-400 text-[11px] font-semibold rounded-xl border border-gray-700 transition">
+          Hapus Catatan
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 border-t border-gray-800 py-6 text-center text-xs text-gray-500">
+    <p>© 2026 Everyday Web Utility Hub • Single File Web App</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // 1. IP & NETWORK CHECKER
+    async function fetchIPInfo() {
+      try {
+        const res = await fetch('https://ipapi.co/json/');
+        const data = await res.json();
+        document.getElementById('ipAddress').innerText = data.ip || 'N/A';
+        document.getElementById('ipLocation').innerText = `${data.city || ''}, ${data.country_name || ''}`;
+        document.getElementById('ipIsp').innerText = data.org || 'N/A';
+      } catch (err) {
+        document.getElementById('ipAddress').innerText = 'Gagal memuat';
+        document.getElementById('ipLocation').innerText = 'Tidak tersedia';
+        document.getElementById('ipIsp').innerText = 'Tidak tersedia';
+      }
+    }
+
+    // 2. PASSWORD GENERATOR
+    function generatePassword() {
+      const len = document.getElementById('passLen').value;
+      document.getElementById('passLenVal').innerText = len;
+      
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=";
+      let pass = "";
+      for (let i = 0; i < len; i++) {
+        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById('passOutput').value = pass;
+    }
+
+    function copyPassword() {
+      const passInput = document.getElementById('passOutput');
+      passInput.select();
+      navigator.clipboard.writeText(passInput.value);
+      alert('Sandi berhasil disalin ke clipboard!');
+    }
+
+    // 3. QR CODE GENERATOR
+    let qrcodeObj = null;
+    function generateQR() {
+      const text = document.getElementById('qrText').value.trim() || "https://google.com";
+      const qrContainer = document.getElementById('qrcode');
+      qrContainer.innerHTML = "";
+      qrcodeObj = new QRCode(qrContainer, {
+        text: text,
+        width: 112,
+        height: 112
+      });
+    }
+
+    // 4. TEXT ANALYZER & TRANSFORMER
+    function analyzeText() {
+      const val = document.getElementById('textInput').value;
+      document.getElementById('charCount').innerText = val.length;
+      const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+      document.getElementById('wordCount').innerText = words;
+    }
+
+    function transformText(type) {
+      const input = document.getElementById('textInput');
+      if (type === 'upper') input.value = input.value.toUpperCase();
+      if (type === 'lower') input.value = input.value.toLowerCase();
+      analyzeText();
+    }
+
+    // 5. DISCOUNT CALCULATOR
+    function calcDiscount() {
+      const price = parseFloat(document.getElementById('priceInput').value) || 0;
+      const disc = parseFloat(document.getElementById('discInput').value) || 0;
+
+      const save = (price * disc) / 100;
+      const finalPrice = price - save;
+
+      document.getElementById('saveAmount').innerText = `Rp ${save.toLocaleString('id-ID')}`;
+      document.getElementById('finalPrice').innerText = `Rp ${finalPrice.toLocaleString('id-ID')}`;
+    }
+
+    // 6. QUICK NOTES (LOCAL STORAGE)
+    function saveNotes() {
+      const notes = document.getElementById('quickNotes').value;
+      localStorage.setItem('everyday_hub_notes', notes);
+      
+      const status = document.getElementById('saveStatus');
+      status.style.opacity = '1';
+      setTimeout(() => { status.style.opacity = '0'; }, 1000);
+    }
+
+    function loadNotes() {
+      const saved = localStorage.getItem('everyday_hub_notes');
+      if (saved) document.getElementById('quickNotes').value = saved;
+    }
+
+    function clearNotes() {
+      document.getElementById('quickNotes').value = '';
+      localStorage.removeItem('everyday_hub_notes');
+    }
+
+    // INITIALIZATION
+    window.onload = function() {
+      fetchIPInfo();
+      generatePassword();
+      generateQR();
+      loadNotes();
+    };
+  </script>
+</body>
+</html>
