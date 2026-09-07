@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev & SEO ToolKit - Kumpulan Web Utility Berguna</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            app: {
+              dark: '#0f172a',
+              card: '#1e293b',
+              accent: '#3b82f6',
+              emerald: '#10b981'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-app-dark text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-app-dark/90 backdrop-blur-md border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTool('keyword')">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-blue-500/20">
+          <i class="fa-solid fa-screwdriver-wrench text-sm"></i>
+        </div>
+        <div>
+          <span class="text-lg font-black tracking-tight text-white block leading-none">DEV<span class="text-blue-400">TOOLKIT</span></span>
+          <span class="text-[10px] text-gray-400 tracking-wider uppercase font-semibold">5-in-1 Web Utilities Hub</span>
+        </div>
+      </div>
+      <div class="hidden sm:flex items-center space-x-2 text-xs font-semibold">
+        <span class="px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center space-x-1">
+          <i class="fa-solid fa-check-double text-[10px]"></i>
+          <span>Ready & Standalone</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TOOL TABS NAVIGATION -->
+  <div class="bg-slate-900 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto no-scrollbar space-x-2 py-3 text-xs font-bold">
+      <button onclick="switchTool('keyword')" id="tab-keyword" class="tool-tab px-4 py-2 rounded-xl transition flex items-center space-x-2 bg-blue-600 text-white shadow-lg shadow-blue-500/20">
+        <i class="fa-solid fa-key"></i>
+        <span>Density & Keyword Analyser</span>
+      </button>
+      <button onclick="switchTool('meta')" id="tab-meta" class="tool-tab px-4 py-2 rounded-xl transition flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white">
+        <i class="fa-solid fa-tags"></i>
+        <span>Meta & Schema Generator</span>
+      </button>
+      <button onclick="switchTool('slug')" id="tab-slug" class="tool-tab px-4 py-2 rounded-xl transition flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white">
+        <i class="fa-solid fa-link"></i>
+        <span>Slug / URL Cleaner</span>
+      </button>
+      <button onclick="switchTool('cleaner')" id="tab-cleaner" class="tool-tab px-4 py-2 rounded-xl transition flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white">
+        <i class="fa-solid fa-broom"></i>
+        <span>HTML Cleaner & Minifier</span>
+      </button>
+      <button onclick="switchTool('export')" id="tab-export" class="tool-tab px-4 py-2 rounded-xl transition flex items-center space-x-2 bg-gray-800 text-gray-400 hover:text-white">
+        <i class="fa-solid fa-file-export"></i>
+        <span>SEO HTML Exporter</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+    
+    <!-- TOOL 1: KEYWORD DENSITY ANALYSER -->
+    <section id="tool-keyword" class="tool-content space-y-6">
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl">
+        <h2 class="text-lg font-bold text-white mb-2 flex items-center space-x-2">
+          <i class="fa-solid fa-chart-pie text-blue-400"></i>
+          <span>Keyword Density & Word Counter</span>
+        </h2>
+        <p class="text-xs text-gray-400 mb-4">Tempelkan teks artikel Anda di bawah untuk menganalisis kerapatan kata kunci (densitas %) dan statistik jumlah kata.</p>
+
+        <textarea id="kwInput" oninput="analyzeKeywords()" rows="6" placeholder="Tempelkan artikel / paragraf di sini..." class="w-full bg-slate-900 border border-gray-700 rounded-xl p-3.5 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-blue-400 font-mono resize-y"></textarea>
+
+        <!-- STATS BAR -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
+          <div class="bg-slate-900 border border-gray-800 p-3 rounded-xl text-center">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Total Kata</span>
+            <span id="statWords" class="text-xl font-bold text-white">0</span>
+          </div>
+          <div class="bg-slate-900 border border-gray-800 p-3 rounded-xl text-center">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Karakter</span>
+            <span id="statChars" class="text-xl font-bold text-blue-400">0</span>
+          </div>
+          <div class="bg-slate-900 border border-gray-800 p-3 rounded-xl text-center">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Est. Waktu Baca</span>
+            <span id="statRead" class="text-xl font-bold text-emerald-400">0m</span>
+          </div>
+          <div class="bg-slate-900 border border-gray-800 p-3 rounded-xl text-center">
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Kata Unik</span>
+            <span id="statUnique" class="text-xl font-bold text-purple-400">0</span>
+          </div>
+        </div>
+
+        <!-- TOP KEYWORDS TABLE -->
+        <div class="mt-6">
+          <h3 class="text-xs font-bold text-gray-300 uppercase tracking-wider mb-3">Top Keyword Frekuensi & Density (%)</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-900 text-gray-400 uppercase text-[10px] border-b border-gray-800">
+                <tr>
+                  <th class="py-2.5 px-3">Keyword</th>
+                  <th class="py-2.5 px-3 text-center">Frekuensi</th>
+                  <th class="py-2.5 px-3 text-right">Kerapatan (Density)</th>
+                </tr>
+              </thead>
+              <tbody id="kwTableBody" class="divide-y divide-gray-800/60 text-gray-300">
+                <tr><td colspan="3" class="py-6 text-center text-gray-500">Belum ada teks yang dimasukkan.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOL 2: META TAG & SCHEMA GENERATOR -->
+    <section id="tool-meta" class="tool-content hidden space-y-6">
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-code text-indigo-400"></i>
+          <span>Meta Tag & Schema.org JSON-LD Generator</span>
+        </h2>
+        <p class="text-xs text-gray-400">Isi parameter web untuk membuat Meta Tag SEO & Schema Article otomatis.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Judul Halaman (Meta Title)</label>
+            <input type="text" id="metaTitleInput" oninput="generateMetaCode()" placeholder="Judul Artikel Web..." class="w-full bg-slate-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-400">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">URL Target Web</label>
+            <input type="text" id="metaUrlInput" oninput="generateMetaCode()" placeholder="https://domain.com/artikel" class="w-full bg-slate-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-indigo-400">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Meta Description</label>
+          <textarea id="metaDescInput" oninput="generateMetaCode()" rows="2" placeholder="Ringkasan konten untuk Google SERP..." class="w-full bg-slate-900 border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-indigo-400 resize-none"></textarea>
+        </div>
+
+        <div class="pt-2">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-indigo-400">Hasil Kode Meta Tag & Schema:</span>
+            <button onclick="copyToClipboard('metaResultCode')" class="text-xs bg-slate-800 hover:bg-slate-700 text-gray-300 px-3 py-1 rounded-lg transition"><i class="fa-solid fa-copy mr-1"></i> Copy Kode</button>
+          </div>
+          <pre id="metaResultCode" class="bg-slate-950 border border-gray-800 p-4 rounded-xl text-xs text-emerald-400 font-mono overflow-x-auto max-h-60 leading-relaxed"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOL 3: SLUG GENERATOR -->
+    <section id="tool-slug" class="tool-content hidden space-y-6">
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-link text-emerald-400"></i>
+          <span>SEO URL Slug Cleaner</span>
+        </h2>
+        <p class="text-xs text-gray-400">Ubah judul mentah menjadi URL Slug yang ramah SEO (ramah karakter khusus & spasi).</p>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Judul / Teks Mentah</label>
+          <input type="text" id="slugInput" oninput="generateSlug()" placeholder="Contoh: Cara Membuat Web SEO-Friendly di Tahun 2026!" class="w-full bg-slate-900 border border-gray-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-400">
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label class="block text-xs font-semibold text-gray-300">Hasil Slug Clean URL</label>
+            <button onclick="copyToClipboard('slugResult')" class="text-xs text-emerald-400 hover:underline"><i class="fa-solid fa-copy mr-1"></i>Copy Slug</button>
+          </div>
+          <input type="text" id="slugResult" readonly class="w-full bg-slate-950 border border-gray-800 rounded-xl px-3.5 py-2.5 text-xs text-emerald-400 font-mono font-bold">
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOL 4: HTML CLEANER & MINIFIER -->
+    <section id="tool-cleaner" class="tool-content hidden space-y-6">
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-broom text-amber-400"></i>
+          <span>HTML Cleaner & Whitespace Minifier</span>
+        </h2>
+        <p class="text-xs text-gray-400">Bersihkan spasi berlebih, baris kosong, dan format HTML yang berantakan.</p>
+
+        <textarea id="htmlDirty" rows="6" placeholder="Tempelkan kode HTML mentah Anda di sini..." class="w-full bg-slate-900 border border-gray-700 rounded-xl p-3 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-amber-400 font-mono resize-y"></textarea>
+
+        <button onclick="cleanHtml()" class="py-2.5 px-5 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl transition text-xs flex items-center space-x-2">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>Bersihkan & Minify HTML</span>
+        </button>
+
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xs font-bold text-gray-300">Hasil Kode HTML Bersih</span>
+            <button onclick="copyToClipboard('htmlCleanResult')" class="text-xs text-amber-400 hover:underline"><i class="fa-solid fa-copy mr-1"></i>Copy Result</button>
+          </div>
+          <textarea id="htmlCleanResult" readonly rows="6" class="w-full bg-slate-950 border border-gray-800 rounded-xl p-3 text-xs text-emerald-400 font-mono resize-y"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOL 5: SEO HTML EXPORTER -->
+    <section id="tool-export" class="tool-content hidden space-y-6">
+      <div class="bg-app-card border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-file-arrow-down text-purple-400"></i>
+          <span>Quick HTML File Downloader</span>
+        </h2>
+        <p class="text-xs text-gray-400">Buat file `.html` siap pakai hanya dalam hitungan detik.</p>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Nama File Output (.html)</label>
+          <input type="text" id="expFileName" value="my-seo-page.html" class="w-full bg-slate-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-400">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Isi Kode HTML Lengkap</label>
+          <textarea id="expContent" rows="8" placeholder="<!DOCTYPE html>&#10;<html>&#10;<body>...</body>&#10;</html>" class="w-full bg-slate-900 border border-gray-700 rounded-xl p-3 text-xs text-gray-200 focus:outline-none focus:border-purple-400 font-mono resize-y"></textarea>
+        </div>
+
+        <button onclick="downloadHtmlFile()" class="w-full py-3.5 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-xl transition text-xs flex items-center justify-center space-x-2 shadow-lg shadow-purple-500/20">
+          <i class="fa-solid fa-download"></i>
+          <span>Download File HTML (.html)</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 border-t border-gray-800 py-6 text-center text-xs text-gray-500">
+    <p>© 2026 Dev & SEO ToolKit • Single File Web App</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    // Tab Switcher
+    function switchTool(toolId) {
+      document.querySelectorAll('.tool-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tool-tab').forEach(el => {
+        el.classList.remove('bg-blue-600', 'text-white', 'shadow-lg', 'shadow-blue-500/20');
+        el.classList.add('bg-gray-800', 'text-gray-400');
+      });
+
+      document.getElementById(`tool-${toolId}`).classList.remove('hidden');
+      const activeTab = document.getElementById(`tab-${toolId}`);
+      activeTab.classList.remove('bg-gray-800', 'text-gray-400');
+      activeTab.classList.add('bg-blue-600', 'text-white', 'shadow-lg', 'shadow-blue-500/20');
+    }
+
+    // Tool 1: Keyword Density Analyser
+    function analyzeKeywords() {
+      const text = document.getElementById('kwInput').value.trim();
+      if (!text) {
+        document.getElementById('statWords').innerText = '0';
+        document.getElementById('statChars').innerText = '0';
+        document.getElementById('statRead').innerText = '0m';
+        document.getElementById('statUnique').innerText = '0';
+        document.getElementById('kwTableBody').innerHTML = '<tr><td colspan="3" class="py-6 text-center text-gray-500">Belum ada teks yang dimasukkan.</td></tr>';
+        return;
+      }
+
+      const words = text.toLowerCase().match(/\b[a-zA-Z0-9_]+\b/g) || [];
+      const totalWords = words.length;
+      const chars = text.length;
+      const readTime = Math.ceil(totalWords / 200);
+
+      const freqMap = {};
+      words.forEach(w => {
+        if (w.length > 2) { // Filter stop words pendek
+          freqMap[w] = (freqMap[w] || 0) + 1;
+        }
+      });
+
+      const uniqueWords = Object.keys(freqMap).length;
+
+      document.getElementById('statWords').innerText = totalWords.toLocaleString();
+      document.getElementById('statChars').innerText = chars.toLocaleString();
+      document.getElementById('statRead').innerText = `${readTime} mnt`;
+      document.getElementById('statUnique').innerText = uniqueWords.toLocaleString();
+
+      const sorted = Object.entries(freqMap).sort((a, b) => b[1] - a[1]).slice(0, 8);
+      let tbodyHtml = '';
+
+      sorted.forEach(([word, count]) => {
+        const density = ((count / totalWords) * 100).toFixed(2);
+        tbodyHtml += `
+          <tr class="hover:bg-slate-800/40">
+            <td class="py-2.5 px-3 font-semibold text-white">${word}</td>
+            <td class="py-2.5 px-3 text-center font-mono">${count}</td>
+            <td class="py-2.5 px-3 text-right font-mono text-blue-400 font-bold">${density}%</td>
+          </tr>
+        `;
+      });
+
+      document.getElementById('kwTableBody').innerHTML = tbodyHtml || '<tr><td colspan="3" class="py-4 text-center text-gray-500">Kata terlalu pendek untuk dianalisis.</td></tr>';
+    }
+
+    // Tool 2: Meta Generator
+    function generateMetaCode() {
+      const title = document.getElementById('metaTitleInput').value.trim() || "Judul Halaman";
+      const url = document.getElementById('metaUrlInput').value.trim() || "https://example.com";
+      const desc = document.getElementById('metaDescInput').value.trim() || "Deskripsi halaman...";
+
+      const code = `<meta charset="UTF-8">
+<title>${title}</title>
+<meta name="description" content="${desc}">
+<link rel="canonical" href="${url}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${desc}">
+<meta property="og:url" content="${url}">
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "${title}",
+  "description": "${desc}",
+  "url": "${url}"
+}
+<\/script>`;
+
+      document.getElementById('metaResultCode').innerText = code;
+    }
+
+    // Tool 3: Slug Generator
+    function generateSlug() {
+      const input = document.getElementById('slugInput').value;
+      const slug = input
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/[\s_-]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      document.getElementById('slugResult').value = slug;
+    }
+
+    // Tool 4: HTML Cleaner
+    function cleanHtml() {
+      const dirty = document.getElementById('htmlDirty').value;
+      const cleaned = dirty
+        .replace(/>\s+</g, '><')
+        .replace(/\s+/g, ' ')
+        .trim();
+      document.getElementById('htmlCleanResult').value = cleaned;
+    }
+
+    // Tool 5: HTML Downloader
+    function downloadHtmlFile() {
+      const fileName = document.getElementById('expFileName').value.trim() || "page.html";
+      const content = document.getElementById('expContent').value;
+
+      if (!content) {
+        alert("Silakan masukkan kode HTML terlebih dahulu!");
+        return;
+      }
+
+      const blob = new Blob([content], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = fileName.endsWith('.html') ? fileName : `${fileName}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function copyToClipboard(elementId) {
+      const el = document.getElementById(elementId);
+      let text = el.value || el.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Kode berhasil disalin!");
+      });
+    }
+
+    // Init defaults
+    generateMetaCode();
+  </script>
+</body>
+</html>
