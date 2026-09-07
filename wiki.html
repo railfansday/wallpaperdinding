@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WikiMerge SEO - Combined Wikipedia Article Generator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            wiki: {
+              dark: '#0f172a',
+              card: '#1e293b',
+              accent: '#38bdf8',
+              emerald: '#10b981'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-wiki-dark text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-wiki-dark/90 backdrop-blur-md border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-sky-500/20">
+          W
+        </div>
+        <div>
+          <span class="text-lg font-black tracking-tight text-white block leading-none">WIKI<span class="text-sky-400">MERGER</span></span>
+          <span class="text-[10px] text-gray-400 tracking-wider uppercase font-semibold">Wikipedia SEO Exporter</span>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3 text-xs font-semibold">
+        <span class="px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center space-x-1">
+          <i class="fa-solid fa-circle text-[8px] animate-pulse"></i>
+          <span>Wikipedia API Ready</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- LEFT PANEL: INPUT & CONFIGURATION -->
+    <div class="lg:col-span-5 space-y-6">
+      
+      <div class="bg-wiki-card border border-gray-800 rounded-2xl p-6 shadow-xl">
+        <h2 class="text-lg font-bold text-white mb-2 flex items-center space-x-2">
+          <i class="fa-solid fa-link text-sky-400"></i>
+          <span>Link / Judul Wikipedia</span>
+        </h2>
+        <p class="text-xs text-gray-400 mb-4">Masukkan tautan artikel Wikipedia atau keyword judul (satu per baris) untuk digabungkan menjadi 1 artikel SEO lengkap.</p>
+
+        <textarea id="wikiUrls" rows="6" placeholder="Contoh:&#10;https://en.wikipedia.org/wiki/American_Family_Insurance&#10;https://en.wikipedia.org/wiki/Prudential_Financial&#10;https://en.wikipedia.org/wiki/MetLife" class="w-full bg-slate-900 border border-gray-700 rounded-xl p-3.5 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-sky-400 font-mono leading-relaxed resize-none"></textarea>
+
+        <div class="mt-4 space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Bahasa Artikel Wiki</label>
+            <select id="wikiLang" class="w-full bg-slate-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-400">
+              <option value="en">English (en.wikipedia.org)</option>
+              <option value="id">Bahasa Indonesia (id.wikipedia.org)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1">Judul Utama H1 (Target Keyword SEO)</label>
+            <input type="text" id="targetTitle" placeholder="Misal: Comprehensive Guide to Top US Insurance Companies" class="w-full bg-slate-900 border border-gray-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-sky-400">
+          </div>
+        </div>
+
+        <button onclick="fetchAndMergeWiki()" id="btnMerge" class="w-full mt-5 py-3.5 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-bold rounded-xl transition shadow-lg shadow-sky-500/20 text-xs flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-arrows-split-up-and-left"></i>
+          <span>Tarik & Gabungkan Artikel</span>
+        </button>
+      </div>
+
+      <!-- SEO OPTIMIZATION OPTIONS -->
+      <div class="bg-wiki-card border border-gray-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-sliders text-sky-400"></i>
+          <span>Pengaturan Ekspor SEO HTML</span>
+        </h3>
+
+        <div class="space-y-2 text-xs">
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="checkbox" id="optToc" checked class="rounded border-gray-700 bg-slate-900 text-sky-500 focus:ring-0">
+            <span class="text-gray-300">Sertakan Table of Contents (TOC) Otomatis</span>
+          </label>
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="checkbox" id="optSchema" checked class="rounded border-gray-700 bg-slate-900 text-sky-500 focus:ring-0">
+            <span class="text-gray-300">Tambahkan Schema.org Article (JSON-LD)</span>
+          </label>
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="checkbox" id="optClean" checked class="rounded border-gray-700 bg-slate-900 text-sky-500 focus:ring-0">
+            <span class="text-gray-300">Bersihkan Tag Sitasi ([1], [citation needed])</span>
+          </label>
+        </div>
+
+        <button onclick="exportSingleHtml()" id="btnExport" disabled class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-gray-800 disabled:text-gray-600 text-white font-bold rounded-xl transition text-xs flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-file-code"></i>
+          <span>Download SEO HTML File (.html)</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- RIGHT PANEL: PREVIEW AREA -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="bg-wiki-card border border-gray-800 rounded-2xl p-6 shadow-xl flex-grow flex flex-col">
+        <div class="flex items-center justify-between pb-4 border-b border-gray-800 mb-4">
+          <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-eye text-sky-400 text-sm"></i>
+            <span class="text-sm font-bold text-white">Live Content Preview</span>
+          </div>
+          <span id="wordCount" class="text-[11px] font-mono text-gray-400 bg-slate-900 px-2.5 py-1 rounded-md border border-gray-800">0 Kata</span>
+        </div>
+
+        <div id="previewContainer" class="flex-grow bg-slate-900/60 border border-gray-800/80 rounded-xl p-6 overflow-y-auto max-h-[550px] text-gray-300 text-sm leading-relaxed space-y-4">
+          <div class="text-center py-20 text-gray-500 flex flex-col items-center justify-center">
+            <i class="fa-brands fa-wikipedia-w text-4xl mb-3 opacity-30"></i>
+            <p class="text-xs">Masukkan tautan Wikipedia di sebelah kiri lalu klik "Tarik & Gabungkan Artikel".</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 border-t border-gray-800 py-6 text-center text-xs text-gray-500">
+    <p>© 2026 WikiMerge Exporter • Siap Impor ke Google Indexing / GitHub Pages</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    let mergedContentStore = [];
+    let generatedArticleHtml = "";
+
+    async function fetchAndMergeWiki() {
+      const rawInput = document.getElementById('wikiUrls').value.trim();
+      const lang = document.getElementById('wikiLang').value;
+      const targetTitle = document.getElementById('targetTitle').value.trim() || "Combined Wikipedia Intelligence Report";
+      const btnMerge = document.getElementById('btnMerge');
+      const preview = document.getElementById('previewContainer');
+
+      if (!rawInput) {
+        alert("Silakan masukkan minimal 1 link atau judul Wikipedia!");
+        return;
+      }
+
+      const items = rawInput.split('\n').map(x => x.trim()).filter(x => x.length > 0);
+      
+      btnMerge.disabled = true;
+      btnMerge.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>Mengambil Data Wikipedia...</span>`;
+      preview.innerHTML = `<div class="text-center py-20 text-sky-400"><i class="fa-solid fa-spinner animate-spin text-2xl mb-2"></i><p class="text-xs">Memproses ${items.length} sumber Wikipedia...</p></div>`;
+
+      mergedContentStore = [];
+
+      for (let item of items) {
+        let title = item;
+        if (item.includes("wikipedia.org/wiki/")) {
+          title = item.split("wikipedia.org/wiki/")[1].split("#")[0];
+        }
+        title = decodeURIComponent(title).replace(/_/g, " ");
+
+        try {
+          const apiUrl = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
+          const res = await fetch(apiUrl);
+          if (res.ok) {
+            const data = await res.json();
+            mergedContentStore.push({
+              title: data.title,
+              extract: data.extract,
+              url: data.content_urls ? data.content_urls.desktop.page : `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(title)}`,
+              image: data.thumbnail ? data.thumbnail.source : null
+            });
+          }
+        } catch (e) {
+          console.error("Gagal mengambil data:", title);
+        }
+      }
+
+      btnMerge.disabled = false;
+      btnMerge.innerHTML = `<i class="fa-solid fa-arrows-split-up-and-left"></i> <span>Tarik & Gabungkan Artikel</span>`;
+
+      if (mergedContentStore.length === 0) {
+        preview.innerHTML = `<div class="text-center py-20 text-rose-400 text-xs">Gagal mengambil data. Pastikan judul/link Wikipedia valid.</div>`;
+        return;
+      }
+
+      renderPreview(targetTitle);
+    }
+
+    function renderPreview(mainTitle) {
+      const preview = document.getElementById('previewContainer');
+      const cleanCit = document.getElementById('optClean').checked;
+      const includeToc = document.getElementById('optToc').checked;
+
+      let totalWords = 0;
+      let htmlOutput = `<h1 class="text-2xl font-bold text-white mb-4">${mainTitle}</h1>`;
+
+      if (includeToc) {
+        htmlOutput += `
+          <div class="bg-slate-800/80 border border-gray-700 p-4 rounded-xl mb-6">
+            <div class="font-bold text-xs uppercase tracking-wider text-sky-400 mb-2"><i class="fa-solid fa-list-ol mr-1"></i> Daftar Isi Artikel</div>
+            <ul class="space-y-1 text-xs text-gray-300 font-medium">
+        `;
+        mergedContentStore.forEach((sec, idx) => {
+          htmlOutput += `<li><a href="#sec-${idx}" class="hover:text-sky-400 transition">${idx + 1}. ${sec.title}</a></li>`;
+        });
+        htmlOutput += `</ul></div>`;
+      }
+
+      mergedContentStore.forEach((sec, idx) => {
+        let text = sec.extract;
+        if (cleanCit) {
+          text = text.replace(/\[\d+\]/g, '').replace(/\[citation needed\]/g, '');
+        }
+
+        totalWords += text.split(' ').length;
+
+        htmlOutput += `
+          <section id="sec-${idx}" class="space-y-3 pt-2">
+            <h2 class="text-lg font-bold text-sky-300 border-b border-gray-800 pb-1">${sec.title}</h2>
+            ${sec.image ? `<img src="${sec.image}" alt="${sec.title}" class="max-w-xs rounded-lg my-2 border border-gray-700">` : ''}
+            <p class="text-gray-300 leading-relaxed">${text}</p>
+            <div class="text-[11px] text-gray-500 italic">Sumber: <a href="${sec.url}" target="_blank" class="underline text-sky-500/80">${sec.url}</a></div>
+          </section>
+        `;
+      });
+
+      preview.innerHTML = htmlOutput;
+      document.getElementById('wordCount').innerText = `${totalWords} Kata`;
+      document.getElementById('btnExport').disabled = false;
+
+      // Save global string for export
+      generatedArticleHtml = htmlOutput;
+    }
+
+    function exportSingleHtml() {
+      const mainTitle = document.getElementById('targetTitle').value.trim() || "Wikipedia Combined Article";
+      const includeSchema = document.getElementById('optSchema').checked;
+
+      const schemaScript = includeSchema ? `
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "${mainTitle}",
+      "datePublished": "${new Date().toISOString()}",
+      "author": {
+        "@type": "Organization",
+        "name": "WikiMerge Automated Publisher"
+      }
+    }
+    <\/script>` : '';
+
+      const fullCode = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${mainTitle}</title>
+  <meta name="description" content="Rangkuman artikel Wikipedia tergabung untuk SEO indexing.">
+  <script src="https://cdn.tailwindcss.com"><\/script>
+  ${schemaScript}
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased py-10 px-4 sm:px-6">
+  <article class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+    ${generatedArticleHtml}
+  </article>
+</body>
+</html>`;
+
+      const blob = new Blob([fullCode], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${mainTitle.toLowerCase().replace(/[^a-z0-9]/g, '-')}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
