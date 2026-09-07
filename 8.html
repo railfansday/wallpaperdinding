@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abstract Fluid Gold Slate - Wallpaper Dinding Minimalis Modern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0a0a0a',
+                        darkcard: '#121212',
+                        darkborder: '#262626'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #f3f4f6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .glassmorphism {
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f3f4f6 0%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #262626 0%, #171717 100%);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #525252, #a3a3a3, #ffffff);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        .prose {
+            color: #e5e7eb;
+            line-height: 1.8;
+        }
+        .prose strong {
+            color: #ffffff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="bg-darkbg text-gray-100 min-h-screen">
+
+    <!-- Progress Bar -->
+    <div id="progress-bar" class="progress-bar" style="width: 0%;"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 glassmorphism shadow-2xl">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-cubes text-2xl text-gray-200"></i>
+                    <span class="text-xl font-bold gradient-text">DecorSpace</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#deskripsi" class="hover:text-white transition font-medium">Deskripsi</a>
+                    <a href="#spesifikasi" class="hover:text-white transition font-medium">Spesifikasi</a>
+                    <a href="#galeri" class="hover:text-white transition font-medium">Galeri Visual</a>
+                    <a href="#keunggulan" class="hover:text-white transition font-medium">Keunggulan</a>
+                    <a href="#rekomendasi" class="hover:text-white transition font-medium">Rekomendasi Ruang</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-neutral-800 transition" aria-label="Toggle menu">
+                        <i class="fas fa-bars text-xl text-gray-200"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-neutral-800">
+                <div class="flex flex-col space-y-3">
+                    <a href="#deskripsi" class="hover:text-white transition font-medium py-2">Deskripsi</a>
+                    <a href="#spesifikasi" class="hover:text-white transition font-medium py-2">Spesifikasi</a>
+                    <a href="#galeri" class="hover:text-white transition font-medium py-2">Galeri Visual</a>
+                    <a href="#keunggulan" class="hover:text-white transition font-medium py-2">Keunggulan</a>
+                    <a href="#rekomendasi" class="hover:text-white transition font-medium py-2">Rekomendasi Ruang</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="relative min-h-[50vh] flex items-center justify-center px-4 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <!-- Free Source Image dari Unsplash -->
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Abstract Fluid Gold Slate" class="w-full h-full object-cover opacity-25" />
+                <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-darkbg/90 to-darkbg"></div>
+            </div>
+
+            <div class="container mx-auto text-center relative z-10 fade-in">
+                <div class="max-w-4xl mx-auto">
+                    <div class="inline-block px-4 py-1 rounded-full bg-neutral-900 border border-neutral-700 text-gray-300 text-sm font-semibold mb-6">
+                        <i class="fas fa-hashtag text-gray-400 mr-2"></i>Kategori 01: Minimalis & Modern
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6 gradient-text">
+                        Abstract Fluid Gold Slate
+                    </h1>
+                    <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+                        Harmoni seni abstrak dengan paduan tekstur batu slate gelap dan aliran tinta alkohol emas cair, menghadirkan estetika kontemporer yang dramatis dan penuh ekspresi.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Content -->
+        <div class="container mx-auto px-4 py-12">
+            <div class="flex flex-col lg:flex-row gap-8">
+                
+                <!-- Main Details -->
+                <article class="w-full space-y-8">
+                    
+                    <!-- 1. Deskripsi Produk -->
+                    <section id="deskripsi" class="fade-in">
+                        <div class="bg-darkcard rounded-2xl p-6 md:p-8 shadow-xl border border-darkborder card-hover">
+                            <h2 class="text-2xl font-bold mb-4 flex items-center text-white">
+                                <i class="fas fa-info-circle text-gray-400 mr-3"></i>
+                                Deskripsi Desain
+                            </h2>
+                            <div class="prose">
+                                <p>
+                                    Wallpaper <strong>Abstract Fluid Gold Slate</strong> menggabungkan dua elemen visual unik: tekstur batuan alam <em>slate</em> bernuansa abu-abu gelap/hitam yang kokoh dengan lekukan dinamis cairan emas (*fluid art*).
+                                </p>
+                                <p class="mt-3">
+                                    Desain lukisan abstrak bernilai seni tinggi ini mampu mengubah dinding polos menjadi mahakarya galeri seni modern. Aliran warna emas memberikan kesan hidup, sementara latar batu slate memberi rasa hangat dan tenang pada ruangan.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 2. Spesifikasi -->
+                    <section id="spesifikasi">
+                        <div class="bg-darkcard rounded-2xl p-6 md:p-8 shadow-lg border border-darkborder card-hover">
+                            <h2 class="text-2xl font-bold mb-6 flex items-center text-white">
+                                <i class="fas fa-sliders-h text-gray-400 mr-3"></i>
+                                Spesifikasi Material
+                            </h2>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-4 bg-neutral-900/80 rounded-xl border border-neutral-800">
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider">Bahan Utama</span>
+                                    <p class="text-lg font-semibold text-white mt-1">Heavy-Duty Textured Non-Woven Vinyl</p>
+                                </div>
+                                <div class="p-4 bg-neutral-900/80 rounded-xl border border-neutral-800">
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider">Tipe Finishing</span>
+                                    <p class="text-lg font-semibold text-white mt-1">Embossed Slate Feel + Liquid Gold Shimmer</p>
+                                </div>
+                                <div class="p-4 bg-neutral-900/80 rounded-xl border border-neutral-800">
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider">Daya Tahan</span>
+                                    <p class="text-lg font-semibold text-white mt-1">Sangat Tebal, Anti Gores & Tahan Kelembapan</p>
+                                </div>
+                                <div class="p-4 bg-neutral-900/80 rounded-xl border border-neutral-800">
+                                    <span class="text-xs text-gray-400 uppercase tracking-wider">Perawatan</span>
+                                    <p class="text-lg font-semibold text-white mt-1">Washable (Dapat Diseka Busa Lembap)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 3. Galeri Preview (Free Source Photos) -->
+                    <section id="galeri">
+                        <div class="bg-darkcard rounded-2xl p-6 md:p-8 shadow-lg border border-darkborder card-hover">
+                            <h2 class="text-2xl font-bold mb-6 flex items-center text-white">
+                                <i class="fas fa-images text-gray-400 mr-3"></i>
+                                Pratinjau Visual
+                            </h2>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="relative overflow-hidden rounded-xl border border-neutral-800 group">
+                                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Fluid Gold Art Detail" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" />
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-end p-3">
+                                        <span class="text-xs text-gray-200">Detail Seni Abstrak Emas</span>
+                                    </div>
+                                </div>
+
+                                <div class="relative overflow-hidden rounded-xl border border-neutral-800 group">
+                                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Modern Dark Living Room" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" />
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-end p-3">
+                                        <span class="text-xs text-gray-200">Aplikasi Interior Ruang Tamu</span>
+                                    </div>
+                                </div>
+
+                                <div class="relative overflow-hidden rounded-xl border border-neutral-800 group">
+                                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80" alt="Abstract Painting Texture" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" />
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-end p-3">
+                                        <span class="text-xs text-gray-200">Tekstur Batu Slate & Tinta</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 4. Keunggulan -->
+                    <section id="keunggulan">
+                        <div class="bg-darkcard rounded-2xl p-6 md:p-8 shadow-lg border border-darkborder card-hover">
+                            <h2 class="text-2xl font-bold mb-6 flex items-center text-white">
+                                <i class="fas fa-star text-gray-400 mr-3"></i>
+                                Keunggulan Utama
+                            </h2>
+
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-4 p-4 bg-neutral-900/50 rounded-xl border border-neutral-800">
+                                    <div class="w-8 h-8 rounded-full bg-neutral-800 text-white flex items-center justify-center font-bold flex-shrink-0 mt-1">
+                                        <i class="fas fa-paint-brush text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-white">Estetika Galeri Seni (Artistic Centerpiece)</h3>
+                                        <p class="text-gray-400 text-sm mt-1">Memberikan kesan eksklusif seperti memiliki mural seni abstrak buatan tangan (*custom hand-painted*) bernilai tinggi.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-4 p-4 bg-neutral-900/50 rounded-xl border border-neutral-800">
+                                    <div class="w-8 h-8 rounded-full bg-neutral-800 text-white flex items-center justify-center font-bold flex-shrink-0 mt-1">
+                                        <i class="fas fa-layer-group text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-white">Tekstur Timbul Berkarakter</h3>
+                                        <p class="text-gray-400 text-sm mt-1">Bukan sekadar cetakan rata; permukaan memiliki relief halus yang meniru guratan alami batu alam.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start space-x-4 p-4 bg-neutral-900/50 rounded-xl border border-neutral-800">
+                                    <div class="w-8 h-8 rounded-full bg-neutral-800 text-white flex items-center justify-center font-bold flex-shrink-0 mt-1">
+                                        <i class="fas fa-adjust text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-white">Kontras Visual Dramatis</h3>
+                                        <p class="text-gray-400 text-sm mt-1">Perpaduan antara warna dasar batu slate yang gelap dankilau emas menciptakan fokus mata yang sangat memukau.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 5. Rekomendasi Ruang -->
+                    <section id="rekomendasi">
+                        <div class="bg-darkcard rounded-2xl p-6 md:p-8 shadow-lg border border-darkborder card-hover">
+                            <h2 class="text-2xl font-bold mb-4 flex items-center text-white">
+                                <i class="fas fa-building text-gray-400 mr-3"></i>
+                                Rekomendasi Aplikasi Ruangan
+                            </h2>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="p-4 bg-neutral-900/60 rounded-xl border-l-4 border-gray-400">
+                                    <h4 class="font-bold text-white mb-1">Feature Wall Ruang Keluarga</h4>
+                                    <p class="text-sm text-gray-400">Sangat sempurna dipasang pada satu sisi dinding utama tempat bersantai.</p>
+                                </div>
+                                <div class="p-4 bg-neutral-900/60 rounded-xl border-l-4 border-gray-400">
+                                    <h4 class="font-bold text-white mb-1">Lounge / Private Bar</h4>
+                                    <p class="text-sm text-gray-400">Menghadirkan suasana tempat hiburan/lounge eksklusif yang tenang dan elegan.</p>
+                                </div>
+                                <div class="p-4 bg-neutral-900/60 rounded-xl border-l-4 border-gray-400">
+                                    <h4 class="font-bold text-white mb-1">Studio / Ruang Kreatif</h4>
+                                    <p class="text-sm text-gray-400">Merangsang inspirasi dan kreativitas lewat guratan abstrak yang ekspresif.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Navigasi / Action -->
+                    <div class="mt-8 flex flex-wrap items-center justify-between gap-4 p-4 glassmorphism rounded-2xl">
+                        <span class="text-sm font-medium text-gray-400">Nomor 07 dari 100 Katalog Wallpaper</span>
+                        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-4 py-2 gradient-bg text-white rounded-lg hover:bg-neutral-800 border border-neutral-700 transition">
+                            <i class="fas fa-arrow-up mr-2"></i>
+                            Kembali ke Atas
+                        </button>
+                    </div>
+
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glassmorphism mt-12 border-t border-neutral-800">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center text-sm text-gray-400">
+                &copy; 2026 DecorSpace. Seluruh hak cipta dilindungi.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        (function() {
+            'use strict';
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // Reading Progress Bar
+            const progressBar = document.getElementById('progress-bar');
+
+            function updateProgressBar() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                if (progressBar) {
+                    progressBar.style.width = scrollPercent + '%';
+                }
+            }
+
+            window.addEventListener('scroll', updateProgressBar);
+            window.addEventListener('resize', updateProgressBar);
+            updateProgressBar();
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const offset = 80;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
