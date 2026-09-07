@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate All-in-One SEO & Domain Auditor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            app: {
+              dark: '#070a12',
+              card: '#0f172a',
+              panel: '#1e293b',
+              accent: '#3b82f6',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              rose: '#f43f5e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-app-dark text-gray-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-app-dark/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-blue-500/20">
+          <i class="fa-solid fa-microchip text-sm"></i>
+        </div>
+        <div>
+          <span class="text-lg font-black tracking-tight text-white block leading-none">ULTIMATE<span class="text-blue-400">AUDITOR</span></span>
+          <span class="text-[10px] text-gray-400 tracking-wider uppercase font-semibold">Full-Suite SEO & Domain Quality Assessor</span>
+        </div>
+      </div>
+      <div class="hidden sm:flex items-center space-x-2 text-xs font-semibold">
+        <span class="px-3 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center space-x-1">
+          <i class="fa-solid fa-layer-group text-[10px]"></i>
+          <span>Multi-Criteria Engine</span>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- LEFT PANEL: INPUT & MULTI-MODULE AUDIT CHECKLIST -->
+    <div class="lg:col-span-6 space-y-6">
+      
+      <!-- TARGET DOMAIN & PAGE CONFIG -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
+        <h2 class="text-sm font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-globe text-blue-400"></i>
+          <span>Target Analisis & Setup Konfigurasi</span>
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">Nama Domain Target</label>
+            <input type="text" id="domainInput" placeholder="contohdomain.com" oninput="updateAll()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-blue-400 font-mono">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-gray-300 uppercase tracking-wider mb-1">Target Kata Kunci Utama</label>
+            <input type="text" id="keywordInput" placeholder="misal: asuransi mobil" oninput="updateAll()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-blue-400">
+          </div>
+        </div>
+
+        <!-- QUICK ACCESS MULTI-EXTERNAL TOOLS -->
+        <div class="pt-2 border-t border-slate-800/80">
+          <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-2">Integrasi Tautan Audit Eksternal (Klik Sekali)</span>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[11px]">
+            <a id="btnWayback" href="#" target="_blank" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 p-2 rounded-lg text-gray-300 flex items-center justify-between">
+              <span class="truncate"><i class="fa-solid fa-clock-rotate-left text-amber-400 mr-1"></i>Wayback</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-500"></i>
+            </a>
+            <a id="btnGoogle" href="#" target="_blank" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 p-2 rounded-lg text-gray-300 flex items-center justify-between">
+              <span class="truncate"><i class="fa-brands fa-google text-emerald-400 mr-1"></i>Index</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-500"></i>
+            </a>
+            <a id="btnAhrefs" href="#" target="_blank" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 p-2 rounded-lg text-gray-300 flex items-center justify-between">
+              <span class="truncate"><i class="fa-solid fa-link text-blue-400 mr-1"></i>Ahrefs</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-500"></i>
+            </a>
+            <a id="btnPagespeed" href="#" target="_blank" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 p-2 rounded-lg text-gray-300 flex items-center justify-between">
+              <span class="truncate"><i class="fa-solid fa-bolt text-purple-400 mr-1"></i>Speed</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-gray-500"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUDIT CHECKLIST MODULES -->
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+        
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+            <i class="fa-solid fa-list-check text-emerald-400"></i>
+            <span>Checklist Pengujian Lengkap (10 Parameter)</span>
+          </h3>
+          <span id="scoreBadge" class="text-xs bg-slate-800 text-gray-300 px-2.5 py-1 rounded-md font-mono font-bold">0 / 10</span>
+        </div>
+
+        <!-- MODULE 1: DOMAIN HEALTH & HISTORY -->
+        <div class="space-y-2">
+          <span class="text-[10px] font-extrabold text-blue-400 uppercase tracking-widest block">1. Keamanan & Riwayat Domain</span>
+          
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk1" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Bebas Riwayat Spam / PBN Abuse</span>
+              <span class="text-[11px] text-gray-400">Arsip Wayback Machine konsisten, tidak pernah diubah menjadi situs judi/porn/spam.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk2" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Bebas Redirect 301 / 302 Berantai</span>
+              <span class="text-[11px] text-gray-400">Domain tidak pernah dialihkan secara agresif ke domain lain untuk manipulasi link juice.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk3" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Profil Backlink Alami & Relevan</span>
+              <span class="text-[11px] text-gray-400">Inbound link berasal dari domain authority tinggi dengan anchor text yang natural.</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- MODULE 2: TECHNICAL & INDEXING -->
+        <div class="space-y-2">
+          <span class="text-[10px] font-extrabold text-purple-400 uppercase tracking-widest block">2. Teknis & Indeks Google</span>
+          
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk4" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Status Indeks Clean (Tidak Manual Action)</span>
+              <span class="text-[11px] text-gray-400">Pencarian `site:domain.com` menampilkan hasil normal tanpa indikasi deindex/de-ranking penalty.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk5" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Sertifikat SSL & Protokol HTTPS Aktif</span>
+              <span class="text-[11px] text-gray-400">Koneksi situs aman dan tidak memicu peringatan keamanan browser.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk6" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Struktur URL & Canonical Tag Valid</span>
+              <span class="text-[11px] text-gray-400">URL ramah SEO (slug bersih) dan menghindari isu duplikasi konten.</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- MODULE 3: ON-PAGE & CONTENT QUALITY -->
+        <div class="space-y-2">
+          <span class="text-[10px] font-extrabold text-emerald-400 uppercase tracking-widest block">3. On-Page & Kualitas Konten</span>
+          
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk7" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Optimasi Title Tag & Meta Description</span>
+              <span class="text-[11px] text-gray-400">Panjang judul (50-60 karakter) dan deskripsi mengandung kata kunci utama secara alami.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk8" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Hierarki Heading Struktur Rapi (H1, H2, H3)</span>
+              <span class="text-[11px] text-gray-400">Satu tag H1 unik per halaman serta penataan sub-heading yang sistematis.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk9" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Kepadatan Kata Kunci Ideal (1% - 2,5%)</span>
+              <span class="text-[11px] text-gray-400">Bebas dari praktek keyword stuffing yang berpotensi memicu algoritma penalty.</span>
+            </div>
+          </label>
+
+          <label class="flex items-start space-x-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80 cursor-pointer text-xs">
+            <input type="checkbox" id="chk10" onchange="updateAll()" class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-0">
+            <div>
+              <span class="font-bold text-gray-200 block">Mobile-Friendly & Performa Kecepatan Tinggi</span>
+              <span class="text-[11px] text-gray-400">Tampilan responsif di smartphone serta nilai Core Web Vitals memadai.</span>
+            </div>
+          </label>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1">Catatan Tambahan & Evaluasi Manual</label>
+          <textarea id="auditNotes" oninput="updateAll()" rows="2" placeholder="Tambahkan catatan khusus, misalnya: Ada backlink authority dari Wikipedia & Detikcom..." class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-blue-400 resize-none"></textarea>
+        </div>
+
+        <button onclick="exportAuditReport()" class="w-full py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-xl transition text-xs shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Unduh Laporan Audit Full-Suite (.html)</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- RIGHT PANEL: DASHBOARD & LIVE REPORT GENERATOR -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="bg-app-card border border-slate-800 rounded-2xl p-6 shadow-xl flex-grow flex flex-col space-y-6">
+        
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+          <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-chart-pie text-blue-400 text-sm"></i>
+            <span class="text-sm font-bold text-white">Ringkasan Hasil Evaluasi All-in-One</span>
+          </div>
+          <span id="statusTag" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-800 text-gray-400">
+            STATUS: BELUM DIPERIKSA
+          </span>
+        </div>
+
+        <!-- REPORT PREVIEW BOX -->
+        <div id="reportContainer" class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-6 space-y-6 flex-grow">
+          <div>
+            <h1 id="repDomain" class="text-2xl font-extrabold text-white font-mono break-all">domain.com</h1>
+            <p id="repKeyword" class="text-xs text-blue-400 mt-1 font-semibold">Target Keyword: -</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider block mb-1">Skor Kelayakan SEO & Domain</span>
+              <span id="repScoreText" class="text-3xl font-black text-gray-400">0%</span>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider block mb-1">Rekomendasi Tindakan</span>
+              <span id="repActionText" class="text-xs font-bold text-gray-300 block mt-1">Selesaikan pengisian checklist di panel kiri untuk mengukur tingkat kelayakan.</span>
+            </div>
+          </div>
+
+          <!-- SUMMARY BREAKDOWN -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold text-gray-300 uppercase tracking-wider">Rincian Kelulusan Parameter</h3>
+            <div id="repBreakdown" class="space-y-1.5 text-xs">
+              <!-- JS Injected -->
+            </div>
+          </div>
+
+          <div id="repNotesBox" class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 hidden">
+            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-wider block mb-1">Catatan Tambahan Evaluasi</span>
+            <p id="repNotesContent" class="text-xs text-gray-300 italic whitespace-pre-line"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-gray-500">
+    <p>© 2026 Ultimate All-in-One SEO Auditor • Single File Utility Tool</p>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    function updateAll() {
+      const rawDomain = document.getElementById('domainInput').value.trim();
+      const keyword = document.getElementById('keywordInput').value.trim();
+      const domain = rawDomain.replace(/^(https?:\/\/)?(www\.)?/, '').split('/')[0];
+      
+      // Update DOM Text
+      document.getElementById('repDomain').innerText = domain || "domain.com";
+      document.getElementById('repKeyword').innerText = `Target Keyword: ${keyword || '-'}`;
+
+      // Links update
+      if (domain) {
+        document.getElementById('btnWayback').href = `https://web.archive.org/web/*/${domain}`;
+        document.getElementById('btnGoogle').href = `https://www.google.com/search?q=site:${domain}`;
+        document.getElementById('btnAhrefs').href = `https://ahrefs.com/backlink-checker?input=${domain}`;
+        document.getElementById('btnPagespeed').href = `https://pagespeed.web.dev/report?url=https://${domain}`;
+      } else {
+        document.getElementById('btnWayback').href = "#";
+        document.getElementById('btnGoogle').href = "#";
+        document.getElementById('btnAhrefs').href = "#";
+        document.getElementById('btnPagespeed').href = "#";
+      }
+
+      // Calculate score across 10 checkboxes
+      const items = [
+        { id: 'chk1', label: 'Keamanan Riwayat Domain (Bebas Spam)' },
+        { id: 'chk2', label: 'Bebas Redirect 301/302 Berantai' },
+        { id: 'chk3', label: 'Kualitas Profil Backlink Alami' },
+        { id: 'chk4', label: 'Status Indeks Google Normal' },
+        { id: 'chk5', label: 'Protokol HTTPS / SSL Valid' },
+        { id: 'chk6', label: 'Struktur URL & Canonical Tag' },
+        { id: 'chk7', label: 'Optimasi Meta Title & Description' },
+        { id: 'chk8', label: 'Struktur Heading (H1, H2, H3) Rapi' },
+        { id: 'chk9', label: 'Kepadatan Keyword Ideal' },
+        { id: 'chk10', label: 'Mobile-Friendly & Performa Kecepatan' }
+      ];
+
+      let score = 0;
+      let breakdownHtml = '';
+
+      items.forEach(item => {
+        const isChecked = document.getElementById(item.id).checked;
+        if (isChecked) {
+          score++;
+          breakdownHtml += `<div class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 border border-slate-800 text-emerald-400">
+            <span class="flex items-center space-x-2"><i class="fa-solid fa-check text-[10px]"></i><span>${item.label}</span></span>
+            <span class="font-bold text-[10px] bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">LULUS</span>
+          </div>`;
+        } else {
+          breakdownHtml += `<div class="flex items-center justify-between p-2 rounded-lg bg-slate-950/60 border border-slate-800 text-rose-400/80">
+            <span class="flex items-center space-x-2"><i class="fa-solid fa-xmark text-[10px]"></i><span>${item.label}</span></span>
+            <span class="font-bold text-[10px] bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20">BELUM</span>
+          </div>`;
+        }
+      });
+
+      document.getElementById('scoreBadge').innerText = `${score} / 10`;
+      document.getElementById('repBreakdown').innerHTML = breakdownHtml;
+
+      const percentage = (score / 10) * 100;
+      const scoreText = document.getElementById('repScoreText');
+      const actionText = document.getElementById('repActionText');
+      const tag = document.getElementById('statusTag');
+
+      scoreText.innerText = `${percentage}%`;
+
+      if (score >= 8) {
+        scoreText.className = "text-3xl font-black text-emerald-400";
+        actionText.className = "text-xs font-bold text-emerald-400 block mt-1";
+        actionText.innerText = "SANGAT OPTIMAL: Domain/Situs memenuhi standar kualitas tinggi untuk SEO & Ranking.";
+        tag.className = "text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+        tag.innerText = "STATUS: AMAN & LAYAK";
+      } else if (score >= 5) {
+        scoreText.className = "text-3xl font-black text-amber-400";
+        actionText.className = "text-xs font-bold text-amber-400 block mt-1";
+        actionText.innerText = "PERLU PERBAIKAN: Terdapat beberapa item krusial yang harus dioptimasi terlebih dahulu.";
+        tag.className = "text-xs font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30";
+        tag.innerText = "STATUS: BUTUH OPTIMASI";
+      } else {
+        scoreText.className = "text-3xl font-black text-rose-400";
+        actionText.className = "text-xs font-bold text-rose-400 block mt-1";
+        actionText.innerText = "RISIKO TINGGI: Domain/Halaman ini berisiko penalty atau tidak terdaftar secara optimal di Google.";
+        tag.className = "text-xs font-bold px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30";
+        tag.innerText = "STATUS: KURANG LAYAK";
+      }
+
+      // Notes
+      const notes = document.getElementById('auditNotes').value.trim();
+      const notesBox = document.getElementById('repNotesBox');
+      const notesContent = document.getElementById('repNotesContent');
+
+      if (notes) {
+        notesBox.classList.remove('hidden');
+        notesContent.innerText = notes;
+      } else {
+        notesBox.classList.add('hidden');
+      }
+    }
+
+    function exportAuditReport() {
+      const rawDomain = document.getElementById('domainInput').value.trim() || "domain.com";
+      const domain = rawDomain.replace(/^(https?:\/\/)?(www\.)?/, '').split('/')[0];
+      const reportHtml = document.getElementById('reportContainer').innerHTML;
+
+      const fullHtml = `<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Full Audit - ${domain}</title>
+  <script src="https://cdn.tailwindcss.com"><\/script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-gray-100 font-sans p-8">
+  <div class="max-w-2xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+    ${reportHtml}
+  </div>
+</body>
+</html>`;
+
+      const blob = new Blob([fullHtml], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `full-audit-${domain.toLowerCase().replace(/[^a-z0-9]/g, '-')}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Initial trigger
+    updateAll();
+  </script>
+</body>
+</html>
