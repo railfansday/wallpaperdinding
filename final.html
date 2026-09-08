@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Decor - Katalog Wallpaper Interior Modern</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e293b',
+                        accent: '#d97706',
+                        accentDark: '#b45309',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-slate-900 to-amber-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid font-bold text-xl fa-paint-roller"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-slate-900 block leading-tight">AURA<span class="text-amber-600">DECOR</span></span>
+                    <span class="text-[10px] text-slate-500 uppercase tracking-widest block font-medium">Interior Modern Wallpaper</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#katalog" class="hover:text-amber-600 transition-colors">Katalog Wallpaper</a>
+                <a href="#keunggulan" class="hover:text-amber-600 transition-colors">Spesifikasi</a>
+                <a href="#kalkulator" class="hover:text-amber-600 transition-colors">Kalkulator Roll</a>
+                <a href="#kontak" class="hover:text-amber-600 transition-colors">Kontak Kami</a>
+            </nav>
+
+            <!-- CTA WA Button -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/6285888608549?text=Halo%20Aura%20Decor,%20saya%20ingin%20konsultasi%20mengenai%20wallpaper%20dinding." target="_blank" class="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-4 py-2.5 rounded-xl shadow-sm hover:shadow-md transition-all text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>0858-8860-8549</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-slate-700 hover:text-amber-600 p-2 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#katalog" class="block py-2 text-slate-700 font-medium hover:text-amber-600">Katalog Wallpaper</a>
+            <a href="#keunggulan" class="block py-2 text-slate-700 font-medium hover:text-amber-600">Spesifikasi</a>
+            <a href="#kalkulator" class="block py-2 text-slate-700 font-medium hover:text-amber-600">Kalkulator Roll</a>
+            <a href="#kontak" class="block py-2 text-slate-700 font-medium hover:text-amber-600">Kontak Kami</a>
+            <a href="https://wa.me/6285888608549?text=Halo%20Aura%20Decor,%20saya%20ingin%20konsultasi%20mengenai%20wallpaper." target="_blank" class="flex items-center justify-center gap-2 bg-emerald-600 text-white py-3 rounded-xl font-medium w-full mt-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Chat via WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative bg-slate-900 text-white overflow-hidden py-16 md:py-24">
+        <div class="absolute inset-0 z-0 opacity-25 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1600');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-transparent z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold tracking-wide uppercase">
+                    <i class="fa-solid fa-sparkles"></i> Koleksi Wallpaper Premium 2026
+                </div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+                    Ubah Suasana Dinding Hunian Anda Lebih <span class="text-amber-500">Mewah & Elegan</span>
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg max-w-xl font-light leading-relaxed">
+                    Pilihan terbaik wallpaper dinding bermutu tinggi berbahan <i>Vinyl Heavy Duty</i>. Tahan air, gampang dibersihkan, dan tersedia dalam berbagai motif interior terkini.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#katalog" class="bg-amber-600 hover:bg-amber-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg transition-all flex items-center gap-2">
+                        <span>Jelajahi Katalog</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <a href="https://wa.me/6285888608549?text=Halo%20Aura%20Decor,%20saya%20butuh%20rekomendasi%20wallpaper." target="_blank" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-6 py-3.5 rounded-xl transition-all flex items-center gap-2 backdrop-blur-sm">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+                        <span>Konsultasi Gratis</span>
+                    </a>
+                </div>
+
+                <!-- Features Mini List -->
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800 text-xs sm:text-sm text-slate-300">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-amber-500"></i>
+                        <span>Tahan Air & Anti Lembap</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-soap text-amber-500"></i>
+                        <span>Mudah Dibersihkan</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-truck-fast text-amber-500"></i>
+                        <span>Pengiriman Cepat</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image Frame -->
+            <div class="hidden md:block relative">
+                <div class="relative mx-auto max-w-md rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 group">
+                    <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&q=80&w=800" alt="Interior Wallpaper Modern" class="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                        <div class="text-white">
+                            <span class="bg-amber-600 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider mb-2 inline-block">Best Seller</span>
+                            <h3 class="font-bold text-lg">Modern Minimalis Geometry</h3>
+                            <p class="text-xs text-slate-300">Roll 0.53m x 10m (± 5m²)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KATALOG SECTION -->
+    <section id="katalog" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Katalog Wallpaper Terbaru</h2>
+            <p class="mt-2 text-slate-600">Pilih motif impian Anda untuk menghias ruang tamu, kamar tidur, cafe, atau kantor.</p>
+        </div>
+
+        <!-- Filter Buttons & Search -->
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+            <!-- Search Input -->
+            <div class="relative w-full md:w-72">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                <input type="text" id="searchInput" placeholder="Cari nama motif atau warna..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 text-sm">
+            </div>
+
+            <!-- Categories Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 w-full md:w-auto" id="filterTabs">
+                <button onclick="filterCategory('all')" class="cat-btn active bg-amber-600 text-white text-xs sm:text-sm font-medium px-4 py-2 rounded-xl transition-all shadow-sm">Semua</button>
+                <button onclick="filterCategory('modern')" class="cat-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 text-xs sm:text-sm font-medium px-4 py-2 rounded-xl transition-all shadow-sm">Modern Minimalis</button>
+                <button onclick="filterCategory('klasik')" class="cat-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 text-xs sm:text-sm font-medium px-4 py-2 rounded-xl transition-all shadow-sm">Klasik Mewah</button>
+                <button onclick="filterCategory('tekstur')" class="cat-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 text-xs sm:text-sm font-medium px-4 py-2 rounded-xl transition-all shadow-sm">Tekstur Kayu & Batu</button>
+                <button onclick="filterCategory('anak')" class="cat-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 text-xs sm:text-sm font-medium px-4 py-2 rounded-xl transition-all shadow-sm">Anak & Lucu</button>
+            </div>
+        </div>
+
+        <!-- Grid Products -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Dynamic JavaScript content renders here -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div id="pagination" class="flex justify-center items-center gap-2 mt-12">
+            <!-- Rendered by JS -->
+        </div>
+    </section>
+
+    <!-- KALKULATOR ROLL WALLPAPER -->
+    <section id="kalkulator" class="bg-slate-100 py-16 border-y border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-lg border border-slate-200/80 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-6 space-y-4">
+                    <span class="inline-block bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Kalkulator Praktis</span>
+                    <h3 class="text-2xl font-bold text-slate-900">Hitung Estimasi Kebutuhan Roll Dinding Anda</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Standar 1 Roll wallpaper kami berukuran **0.53 m x 10 m (± 5 m²)**. Masukkan ukuran lebar dan tinggi dinding ruangan Anda untuk mengetahui perkiraan roll yang dibutuhkan.
+                    </p>
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 text-xs text-amber-900 space-y-1">
+                        <p class="font-semibold"><i class="fa-solid fa-circle-info mr-1"></i> Catatan:</p>
+                        <p>Hitungan sudah ditambahkan toleransi ikatan motif (+10% cadangan).</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Lebar Dinding (Meter)</label>
+                            <input type="number" id="wallWidth" placeholder="Misal: 4" step="0.1" min="0.5" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-slate-800 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tinggi Dinding (Meter)</label>
+                            <input type="number" id="wallHeight" placeholder="Misal: 3" step="0.1" min="0.5" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-slate-800 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <button onclick="calculateRolls()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 rounded-lg text-sm transition-all shadow">
+                        Hitung Kebutuhan Roll
+                    </button>
+
+                    <!-- Result Box -->
+                    <div id="calcResult" class="hidden pt-3 border-t border-slate-200 text-center">
+                        <span class="text-xs text-slate-500 block uppercase font-medium">Estimasi Kebutuhan:</span>
+                        <div class="text-3xl font-extrabold text-amber-600 my-1"><span id="rollCount">0</span> Roll</div>
+                        <p class="text-xs text-slate-500">Sesuai untuk total area <span id="totalArea" class="font-bold text-slate-700">0</span> m²</p>
+                        <a id="calcWaLink" href="#" target="_blank" class="mt-3 inline-flex items-center justify-center gap-2 text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg w-full transition-all">
+                            <i class="fa-brands fa-whatsapp"></i> Pesan Jumlah Roll Ini via WA
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPESIFIKASI & KEUNGGULAN SECTION -->
+    <section id="keunggulan" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl font-extrabold text-slate-900">Spesifikasi Material Wallpaper</h2>
+            <p class="text-slate-600 mt-2">Dibuat menggunakan material terbaik untuk daya tahan jangka panjang.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-scroll"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Vinyl Heavy Duty</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Lapisan *Vinyl Backed Paper* tebal dan memiliki tekstur timbul (*embossed*) bermutu tinggi yang membuat tampilan motif lebih hidup dan elegan.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-droplet"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Waterproof & Washable</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Tahan cipratan air dan sangat mudah dibersihkan. Cukup lap dengan kain spons lembap jika terkena debu atau noda ringan.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Ukuran Standar Presisi</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Satu roll standar memuat ukuran **0.53 meter x 10 meter** (mencakup luas permukaan dinding sekitar **5 m²**).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="productModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl transition-all transform relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white text-slate-700 w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2">
+                <div class="h-64 sm:h-full relative bg-slate-100">
+                    <img id="modalImg" src="" alt="Detail Wallpaper" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 flex flex-col justify-between">
+                    <div>
+                        <span id="modalCategory" class="inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider mb-2">Kategori</span>
+                        <h3 id="modalTitle" class="text-xl font-bold text-slate-900 leading-tight mb-2">Nama Produk</h3>
+                        <div id="modalPrice" class="text-2xl font-extrabold text-amber-600 mb-4">Rp 0</div>
+
+                        <!-- Specs Table -->
+                        <div class="border-t border-slate-200 pt-3 space-y-2 text-xs text-slate-600 mb-6">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Ukuran Roll:</span>
+                                <span class="text-slate-900 font-semibold">0.53 m x 10 m (± 5 m²)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Bahan:</span>
+                                <span class="text-slate-900 font-semibold">Vinyl Backed Paper</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Fitur Dinding:</span>
+                                <span class="text-slate-900 font-semibold">Tahan Air & Washable</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="font-medium">Status Stok:</span>
+                                <span class="text-emerald-600 font-bold">Ready Stock</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <a id="modalWaBtn" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Pesan via WhatsApp</span>
+                        </a>
+                        <button onclick="closeModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-2 rounded-xl text-xs transition-all">
+                            Tutup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="kontak" class="bg-slate-900 text-slate-300 pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <!-- Brand Info -->
+            <div class="space-y-4 md:col-span-1">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-amber-600 flex items-center justify-center text-white font-bold">
+                        <i class="fa-solid fa-paint-roller"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">AURA<span class="text-amber-500">DECOR</span></span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Pusat penyedia wallpaper interior dinding berkualitas tinggi. Hadir dengan motif modern, elegan, dan harga terjangkau untuk mempercantik ruangan Anda.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="space-y-3">
+                <h4 class="text-white font-semibold text-sm">Kategori Wallpaper</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li><a href="#katalog" onclick="filterCategory('modern')" class="hover:text-amber-400 transition-colors">Modern Minimalis</a></li>
+                    <li><a href="#katalog" onclick="filterCategory('klasik')" class="hover:text-amber-400 transition-colors">Klasik Mewah</a></li>
+                    <li><a href="#katalog" onclick="filterCategory('tekstur')" class="hover:text-amber-400 transition-colors">Tekstur Kayu & Batu</a></li>
+                    <li><a href="#katalog" onclick="filterCategory('anak')" class="hover:text-amber-400 transition-colors">Anak & Lucu</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="space-y-3">
+                <h4 class="text-white font-semibold text-sm">Kontak & Layanan</h4>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-location-dot mt-0.5 text-amber-500"></i>
+                        <span>Jl. Interior Raya No. 88, Jakarta Selatan, Indonesia</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-amber-500"></i>
+                        <a href="tel:085888608549" class="hover:text-amber-400">0858-8860-8549</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-500"></i>
+                        <a href="https://wa.me/6285888608549" target="_blank" class="hover:text-amber-400">0858-8860-8549</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-envelope text-amber-500"></i>
+                        <span>sales@auradecor.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Working Hours & Social -->
+            <div class="space-y-3">
+                <h4 class="text-white font-semibold text-sm">Jam Operasional</h4>
+                <p class="text-xs text-slate-400">Senin - Sabtu: 08.00 - 18.00 WIB</p>
+                <p class="text-xs text-slate-400">Minggu: Tutup (Tetap menerima Chat WA)</p>
+                <div class="pt-2 flex gap-3">
+                    <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-amber-600 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-amber-600 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://wa.me/6285888608549" target="_blank" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-emerald-600 flex items-center justify-center text-slate-300 hover:text-white transition-colors">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+            <p>&copy; 2026 Aura Decor. Hak Cipta Dilindungi.</p>
+            <p>Katalog Wallpaper Interior Modern Premium.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATASET WALLPAPER (MENGGUNAKAN GAMBAR UNSPLASH GRATIS)
+        const productsData = [
+            {
+                id: 1,
+                name: "Aura Gold Damask Classic",
+                category: "klasik",
+                categoryLabel: "Klasik Mewah",
+                price: "Rp 145.000",
+                rawPrice: 145000,
+                image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 2,
+                name: "Geometric Hexagon Grey",
+                category: "modern",
+                categoryLabel: "Modern Minimalis",
+                price: "Rp 135.000",
+                rawPrice: 135000,
+                image: "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 3,
+                name: "Natural Oak Wood Texture",
+                category: "tekstur",
+                categoryLabel: "Tekstur Kayu & Batu",
+                price: "Rp 150.000",
+                rawPrice: 150000,
+                image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 4,
+                name: "Cute Animal Jungle Friends",
+                category: "anak",
+                categoryLabel: "Anak & Lucu",
+                price: "Rp 125.000",
+                rawPrice: 125000,
+                image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 5,
+                name: "Monochrome Lines Minimalist",
+                category: "modern",
+                categoryLabel: "Modern Minimalis",
+                price: "Rp 130.000",
+                rawPrice: 130000,
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 6,
+                name: "Exotic Italian Velvet Floral",
+                category: "klasik",
+                categoryLabel: "Klasik Mewah",
+                price: "Rp 160.000",
+                rawPrice: 160000,
+                image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 7,
+                name: "Exposed Industrial Concrete",
+                category: "tekstur",
+                categoryLabel: "Tekstur Kayu & Batu",
+                price: "Rp 140.000",
+                rawPrice: 140000,
+                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 8,
+                name: "Pastel Clouds & Starry Sky",
+                category: "anak",
+                categoryLabel: "Anak & Lucu",
+                price: "Rp 120.000",
+                rawPrice: 120000,
+                image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 9,
+                name: "Scandinavian Soft Wave Pastel",
+                category: "modern",
+                categoryLabel: "Modern Minimalis",
+                price: "Rp 138.000",
+                rawPrice: 138000,
+                image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 10,
+                name: "Royal Baroque Bronze Pattern",
+                category: "klasik",
+                categoryLabel: "Klasik Mewah",
+                price: "Rp 165.000",
+                rawPrice: 165000,
+                image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=600"
+            }
+        ];
+
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let currentPage = 1;
+        const itemsPerPage = 8;
+
+        // INITIALIZE APP
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+
+            // Search Filter Listener
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase();
+                currentPage = 1;
+                renderProducts();
+            });
+
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+
+        // FILTER CATEGORY FUNCTION
+        function filterCategory(cat) {
+            currentCategory = cat;
+            currentPage = 1;
+
+            // Update Tab Active Styling
+            const buttons = document.querySelectorAll('#filterTabs button');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-amber-600', 'text-white', 'active');
+                btn.classList.add('bg-white', 'text-slate-600');
+            });
+
+            event.currentTarget.classList.remove('bg-white', 'text-slate-600');
+            event.currentTarget.classList.add('bg-amber-600', 'text-white', 'active');
+
+            renderProducts();
+        }
+
+        // RENDER PRODUCTS GRID & PAGINATION
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const paginationEl = document.getElementById('pagination');
+
+            // Filter Logic
+            let filtered = productsData.filter(p => {
+                const matchCategory = currentCategory === 'all' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchQuery) || p.categoryLabel.toLowerCase().includes(searchQuery);
+                return matchCategory && matchSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-slate-200">
+                        <i class="fa-solid fa-box-open text-4xl text-slate-300 mb-3"></i>
+                        <h4 class="text-lg font-bold text-slate-700">Tidak ada produk ditemukan</h4>
+                        <p class="text-xs text-slate-500">Coba kata kunci lain atau pilih kategori yang berbeda.</p>
+                    </div>
+                `;
+                paginationEl.innerHTML = '';
+                return;
+            }
+
+            // Pagination Logic
+            const totalPages = Math.ceil(filtered.length / itemsPerPage);
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const paginatedItems = filtered.slice(startIndex, startIndex + itemsPerPage);
+
+            // Render Product Cards
+            grid.innerHTML = paginatedItems.map(p => `
+                <div class="product-card bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- Image Frame -->
+                        <div class="relative h-52 bg-slate-100 overflow-hidden">
+                            <img src="${p.image}" alt="${p.name}" class="product-img w-full h-full object-cover transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-semibold px-2.5 py-1 rounded-lg">
+                                ${p.categoryLabel}
+                            </span>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-5">
+                            <h3 class="font-bold text-slate-900 group-hover:text-amber-600 transition-colors line-clamp-1">${p.name}</h3>
+                            <div class="mt-2 text-lg font-extrabold text-amber-600">${p.price} <span class="text-xs font-normal text-slate-400">/ roll</span></div>
+
+                            <!-- Specs List -->
+                            <div class="mt-3 pt-3 border-t border-slate-100 space-y-1 text-xs text-slate-500">
+                                <p><i class="fa-solid fa-ruler-horizontal text-amber-500 w-4"></i> 0.53m x 10m (± 5 m²)</p>
+                                <p><i class="fa-solid fa-layer-group text-amber-500 w-4"></i> Vinyl Heavy Duty</p>
+                                <p><i class="fa-solid fa-droplet text-amber-500 w-4"></i> Tahan Air & Washable</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="p-5 pt-0 grid grid-cols-2 gap-2">
+                        <button onclick="openModal(${p.id})" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium py-2 rounded-xl text-xs transition-colors">
+                            Detail
+                        </button>
+                        <a href="https://wa.me/6285888608549?text=Halo%20Aura%20Decor,%20saya%20tertarik%20dengan%20wallpaper:%20${encodeURIComponent(p.name)}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 rounded-xl text-xs flex items-center justify-center gap-1 transition-colors">
+                            <i class="fa-brands fa-whatsapp"></i> Pesan
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Pagination Buttons
+            let paginationHtml = '';
+            if (totalPages > 1) {
+                for (let i = 1; i <= totalPages; i++) {
+                    paginationHtml += `
+                        <button onclick="goToPage(${i})" class="w-9 h-9 rounded-xl font-semibold text-xs transition-all ${currentPage === i ? 'bg-amber-600 text-white shadow' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'}">
+                            ${i}
+                        </button>
+                    `;
+                }
+            }
+            paginationEl.innerHTML = paginationHtml;
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            renderProducts();
+            document.getElementById('katalog').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // MODAL FUNCTIONS
+        function openModal(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+
+            document.getElementById('modalImg').src = product.image;
+            document.getElementById('modalTitle').innerText = product.name;
+            document.getElementById('modalCategory').innerText = product.categoryLabel;
+            document.getElementById('modalPrice').innerText = product.price;
+            
+            const waText = encodeURIComponent(`Halo Aura Decor, saya ingin memesan wallpaper: ${product.name} (${product.price}/roll). Mohon informasi ketersediaan stok.`);
+            document.getElementById('modalWaBtn').href = `https://wa.me/6285888608549?text=${waText}`;
+
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        // ROLL CALCULATOR FUNCTION
+        function calculateRolls() {
+            const width = parseFloat(document.getElementById('wallWidth').value);
+            const height = parseFloat(document.getElementById('wallHeight').value);
+
+            if (!width || !height || width <= 0 || height <= 0) {
+                alert('Silakan masukkan lebar dan tinggi dinding yang valid!');
+                return;
+            }
+
+            const area = width * height;
+            // 1 Roll = 5 m2. Menambahkan 10% toleransi pemotongan motif
+            const rollsNeeded = Math.ceil((area * 1.1) / 5);
+
+            document.getElementById('rollCount').innerText = rollsNeeded;
+            document.getElementById('totalArea').innerText = area.toFixed(1);
+
+            const calcWaText = encodeURIComponent(`Halo Aura Decor, saya sudah mengukur dinding (Lebar: ${width}m x Tinggi: ${height}m = ${area.toFixed(1)}m²). Saya butuh sekitar ${rollsNeeded} roll. Mohon dibantu pemesanannya.`);
+            document.getElementById('calcWaLink').href = `https://wa.me/6285888608549?text=${calcWaText}`;
+
+            document.getElementById('calcResult').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
